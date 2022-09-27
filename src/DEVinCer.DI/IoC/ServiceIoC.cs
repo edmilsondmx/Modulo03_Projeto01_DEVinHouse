@@ -1,6 +1,6 @@
 using DEVinCer.Domain.Interfaces.Service;
-using DEVinCer.Domain.Services;
 using Microsoft.Extensions.DependencyInjection;
+using DEVinCer.Domain.Services;
 
 namespace DEVinCer.DI.IoC;
 
