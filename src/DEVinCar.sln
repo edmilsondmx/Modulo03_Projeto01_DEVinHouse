@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEVinCar.Api", "DEVinCar.Api\DEVinCar.Api.csproj", "{D9A76EEA-9C5C-4B22-ADEB-E2A96183A822}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEVinCer.DI", "DEVinCer.DI\DEVinCer.DI.csproj", "{EF906160-7F7C-48EC-B6E2-84906AE8BAF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEVinCer.Domain", "DEVinCer.Domain\DEVinCer.Domain.csproj", "{1E963916-A7FB-41F2-952B-E0B38E697B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DEVinCer.Infra", "DEVinCer.Infra\DEVinCer.Infra.csproj", "{60A2815B-80FB-4235-A085-B57996005AA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,17 @@ Global
 		{D9A76EEA-9C5C-4B22-ADEB-E2A96183A822}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9A76EEA-9C5C-4B22-ADEB-E2A96183A822}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9A76EEA-9C5C-4B22-ADEB-E2A96183A822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF906160-7F7C-48EC-B6E2-84906AE8BAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF906160-7F7C-48EC-B6E2-84906AE8BAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF906160-7F7C-48EC-B6E2-84906AE8BAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF906160-7F7C-48EC-B6E2-84906AE8BAF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E963916-A7FB-41F2-952B-E0B38E697B97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E963916-A7FB-41F2-952B-E0B38E697B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E963916-A7FB-41F2-952B-E0B38E697B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E963916-A7FB-41F2-952B-E0B38E697B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60A2815B-80FB-4235-A085-B57996005AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A2815B-80FB-4235-A085-B57996005AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A2815B-80FB-4235-A085-B57996005AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A2815B-80FB-4235-A085-B57996005AA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
