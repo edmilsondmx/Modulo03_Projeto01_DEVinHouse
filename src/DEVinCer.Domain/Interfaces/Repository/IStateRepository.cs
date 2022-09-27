@@ -1,4 +1,4 @@
-using DEVinCar.Api.Models;
+using DEVinCar.Domain.Models;
 
 namespace DEVinCer.Domain.Interfaces.Repository;
 

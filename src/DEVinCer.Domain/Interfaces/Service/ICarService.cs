@@ -1,4 +1,4 @@
-using DEVinCar.Api.DTOs;
+using DEVinCar.Domain.DTOs;
 
 namespace DEVinCer.Domain.Interfaces.Service;
 

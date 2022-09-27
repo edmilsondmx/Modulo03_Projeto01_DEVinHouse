@@ -1,10 +1,9 @@
-﻿using System.Linq;
-using DEVinCar.Api.Data;
-using DEVinCar.Api.DTOs;
-using DEVinCar.Api.Models;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using DEVinCar.Api.ViewModels;
+using DEVinCar.Infra.Data;
+using DEVinCar.Domain.ViewModels;
+using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.Models;
 
 namespace DEVinCar.Api.Controllers;
 
