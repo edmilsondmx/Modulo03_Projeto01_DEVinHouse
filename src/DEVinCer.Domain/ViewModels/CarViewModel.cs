@@ -1,5 +1,4 @@
-using DEVinCar.Api.Models;
-namespace DEVinCar.Api.ViewModels;
+namespace DEVinCar.Domain.ViewModels;
 public class CarViewModel
 {
     public string Name { get; set; }
