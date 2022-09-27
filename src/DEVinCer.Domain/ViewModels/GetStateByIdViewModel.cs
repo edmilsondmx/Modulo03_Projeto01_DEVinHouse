@@ -1,4 +1,4 @@
-﻿namespace DEVinCar.Api.ViewModels
+namespace DEVinCar.Api.ViewModels
 {
     public class GetStateByIdViewModel
     {

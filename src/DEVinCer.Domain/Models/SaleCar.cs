@@ -1,4 +1,4 @@
-﻿namespace DEVinCar.Api.Models
+namespace DEVinCar.Api.Models
 {
     public class SaleCar
     {

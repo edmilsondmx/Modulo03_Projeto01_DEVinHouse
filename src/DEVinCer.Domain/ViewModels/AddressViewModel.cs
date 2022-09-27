@@ -1,4 +1,4 @@
-﻿using DEVinCar.Api.Models;
+using DEVinCar.Api.Models;
 
 namespace DEVinCar.Api.ViewModels {
     public class AddressViewModel {
