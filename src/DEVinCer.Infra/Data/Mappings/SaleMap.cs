@@ -29,11 +29,13 @@ public class SaleMap : IEntityTypeConfiguration<Sale>
             
         entity.HasOne(s => s.UserBuyer)
             .WithMany()
-            .HasForeignKey(s => s.BuyerId);
+            .HasForeignKey(s => s.BuyerId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         entity.HasOne(s => s.UserSeller)
             .WithMany()
-            .HasForeignKey(s => s.SellerId);
+            .HasForeignKey(s => s.SellerId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 
 }

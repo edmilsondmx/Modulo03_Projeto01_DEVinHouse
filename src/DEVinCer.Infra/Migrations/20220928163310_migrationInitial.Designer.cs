@@ -4,6 +4,7 @@ using DEVinCar.Infra.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DEVinCer.Infra.Migrations
 {
     [DbContext(typeof(DevInCarDbContext))]
-    partial class DevInCarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220928163310_migrationInitial")]
+    partial class migrationInitial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
