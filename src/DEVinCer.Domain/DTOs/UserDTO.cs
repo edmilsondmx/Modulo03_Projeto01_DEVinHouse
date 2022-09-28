@@ -3,7 +3,9 @@ using DEVinCar.Domain.Annotations;
 using DEVinCer.Domain.Enums;
 
 namespace DEVinCar.Domain.DTOs;
-public class UserDTO{
+public class UserDTO
+{
+    public int Id {get; internal set;}
     [Required(ErrorMessage = "The name is required")]
     [MaxLength(255)]
     public string Name { get; set; }
