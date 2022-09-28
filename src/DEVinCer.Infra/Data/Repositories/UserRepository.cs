@@ -10,23 +10,29 @@ public class UserRepository : BaseRepository<User, int>, IUserRepository
     {
     }
 
-    public IList<SaleCar> GetBuyerByUserID(int id)
+    public IList<Sale> GetBuyerByUserID(int id)
     {
-        throw new NotImplementedException();
+        return _context.Sales
+            .Where(s => s.BuyerId == id)
+            .ToList();
     }
 
-    public IList<SaleCar> GetSalesByUserID(int id)
+    public IList<Sale> GetSalesByUserID(int id)
     {
-        throw new NotImplementedException();
+        return _context.Sales
+            .Where(s => s.SellerId == id)
+            .ToList();
     }
 
     public void InsertBuy(Sale buy)
     {
-        throw new NotImplementedException();
+        _context.Sales.Add(buy);
+        _context.SaveChanges();
     }
 
     public void InsertSale(Sale sale)
     {
-        throw new NotImplementedException();
+        _context.Sales.Add(sale);
+        _context.SaveChanges();
     }
 }
