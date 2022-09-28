@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using DEVinCar.Infra.Data;
 using DEVinCer.DI.Autentication;
 using DEVinCer.DI.IoC;
+using DEVinCer.Domain.AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,8 @@ builder.Services.RegisterRepositories();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton(AutoMapperConfig.Configure());
 
 builder.Services.RegisterAuthentication();
 

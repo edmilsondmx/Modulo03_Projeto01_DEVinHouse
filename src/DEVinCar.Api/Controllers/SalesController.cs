@@ -85,10 +85,10 @@ public class SalesController : ControllerBase
            [FromRoute] int saleId,
            [FromBody] DeliveryDTO body)
     {
-        if (!body.AddressId.HasValue)
+        /* if (!body.AddressId.HasValue)
         {
             return BadRequest();
-        }
+        } */
 
         if (_context.Sales.Find(saleId) == null)
         {
