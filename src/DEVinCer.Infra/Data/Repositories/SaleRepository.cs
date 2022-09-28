@@ -12,21 +12,25 @@ public class SaleRepository : BaseRepository<SaleCar, int>, ISaleRepository
 
     public void InsertDelivery(Delivery delivery)
     {
-        throw new NotImplementedException();
+        _context.Deliveries.Add(delivery);
+        _context.SaveChanges();
     }
 
     public void InsertSale(SaleCar saleCar)
     {
-        throw new NotImplementedException();
+        _context.SaleCars.Add(saleCar);
+        _context.SaveChanges();
     }
 
     public void UpdateAmount(SaleCar saleCar)
     {
-        throw new NotImplementedException();
+        _context.SaleCars.Update(saleCar);
+        _context.SaveChanges();
     }
 
     public void UpdatePrice(SaleCar saleCar)
     {
-        throw new NotImplementedException();
+        _context.SaleCars.Update(saleCar);
+        _context.SaveChanges();
     }
 }

@@ -4,7 +4,7 @@ namespace DEVinCer.Infra.Data.Repositories;
 
 public class BaseRepository <TEntity, Tkey> where TEntity : class
 {
-    private readonly DevInCarDbContext _context;
+    protected readonly DevInCarDbContext _context;
 
     public BaseRepository(DevInCarDbContext context)
     {
