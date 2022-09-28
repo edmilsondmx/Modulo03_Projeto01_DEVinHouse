@@ -12,16 +12,18 @@ public class StateRepository : BaseRepository<State, int>, IStateRepository
 
     public City GetCityById(int cityId)
     {
-        throw new NotImplementedException();
+        return _context.Cities.Find(cityId);
     }
 
-    public void InsertAdress(Address adress)
+    public void InsertAdress(Address address)
     {
-        throw new NotImplementedException();
+        _context.Addresses.Add(address);
+        _context.SaveChanges();
     }
 
     public void InsertCity(City city)
     {
-        throw new NotImplementedException();
+        _context.Cities.Add(city);
+        _context.SaveChanges();
     }
 }
