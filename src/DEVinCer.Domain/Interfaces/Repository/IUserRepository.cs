@@ -11,5 +11,5 @@ public interface IUserRepository
     void Insert(User user);
     void InsertSale(Sale sale);
     void InsertBuy(Sale buy);
-    void DeleteUser(User user);
+    void Delete(User user);
 }
