@@ -13,8 +13,7 @@ public class StateMap : IEntityTypeConfiguration<State>
         entity.HasKey(s => s.Id);
 
         entity.Property(s => s.Id)
-            .HasColumnName("ID")
-            .HasColumnType("uniqueidentifier");
+            .HasColumnName("ID");
 
         entity.Property(s => s.Name)
             .HasColumnName("NAME")

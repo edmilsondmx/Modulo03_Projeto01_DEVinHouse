@@ -13,8 +13,7 @@ public class SaleMap : IEntityTypeConfiguration<Sale>
         entity.HasKey(s => s.Id);
 
         entity.Property(s => s.Id)
-            .HasColumnName("ID")
-            .HasColumnType("uniqueidentifier");
+            .HasColumnName("ID");
 
         entity.Property(s => s.SaleDate)
             .HasColumnName("SALE_DATE")

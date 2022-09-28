@@ -13,8 +13,7 @@ public class CityMap : IEntityTypeConfiguration<City>
         entity.HasKey(c => c.Id);
 
         entity.Property(c => c.Id)
-            .HasColumnName("ID")
-            .HasColumnType("uniqueidentifier");
+            .HasColumnName("ID");
 
         entity.Property(c => c.Name)
             .HasColumnName("NAME")

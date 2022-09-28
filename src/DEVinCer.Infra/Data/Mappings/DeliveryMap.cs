@@ -13,8 +13,7 @@ public class DeliveryMap : IEntityTypeConfiguration<Delivery>
         entity.HasKey(d => d.Id);
 
         entity.Property(d => d.Id)
-            .HasColumnName("ID")
-            .HasColumnType("uniqueidentifier");
+            .HasColumnName("ID");
 
         entity.Property(d => d.AddressId)
             .HasColumnName("ADDRESS_ID")

@@ -10,35 +10,34 @@ public class AddressMap : IEntityTypeConfiguration<Address>
     {
         entity.ToTable("ADDRESS");
 
-        entity.HasKey(d => d.Id);
+        entity.HasKey(a => a.Id);
 
-        entity.Property(d => d.Id)
-            .HasColumnName("ID")
-            .HasColumnType("uniqueidentifier");
+        entity.Property(a => a.Id)
+            .HasColumnName("ID");
 
-        entity.Property(d => d.CityId)
-            .HasColumnName("CITY_ID")
+        entity.Property(a => a.CityId)
+            .HasColumnName("CITY")
             .HasColumnType("int")
             .IsRequired();
 
-        entity.Property(d => d.Street)
+        entity.Property(a => a.Street)
             .HasColumnName("STREET")
             .HasColumnType("VARCHAR")
             .HasMaxLength(150)
             .IsRequired();
 
-        entity.Property(d => d.Cep)
+        entity.Property(a => a.Cep)
             .HasColumnName("CEP")
             .HasColumnType("VARCHAR")
             .HasMaxLength(8)
             .IsRequired();
 
-        entity.Property(d => d.Number)
+        entity.Property(a => a.Number)
             .HasColumnName("NUMBER")
             .HasColumnType("int")
             .IsRequired();
 
-        entity.Property(d => d.Complement)
+        entity.Property(a => a.Complement)
             .HasColumnName("COMPLEMENT")
             .HasColumnType("VARCHAR")
             .HasMaxLength(255);

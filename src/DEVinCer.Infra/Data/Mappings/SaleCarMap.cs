@@ -13,8 +13,7 @@ public class SaleCarMap : IEntityTypeConfiguration<SaleCar>
         entity.HasKey(sc => sc.Id);
 
         entity.Property(sc => sc.Id)
-            .HasColumnName("ID")
-            .HasColumnType("uniqueidentifier");
+            .HasColumnName("ID");
 
         entity.Property(sc => sc.SaleId)
             .HasColumnName("SALE_ID")

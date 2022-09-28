@@ -13,8 +13,7 @@ public class UserMap : IEntityTypeConfiguration<User>
         entity.HasKey(u => u.Id);
 
         entity.Property(u => u.Id)
-            .HasColumnName("ID")
-            .HasColumnType("uniqueidentifier");
+            .HasColumnName("ID");
 
         entity.Property(u => u.Email)
             .HasColumnName("EMAIL")
