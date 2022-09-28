@@ -1,12 +1,20 @@
 using System.Text.Json.Serialization;
 using DEVinCar.Infra.Data;
+using DEVinCer.DI.Autentication;
+using DEVinCer.DI.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
+builder.Services.RegisterServices();
+builder.Services.RegisterRepositories();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DevInCarDbContext>();
+
+builder.Services.RegisterAuthentication();
 
 var app = builder.Build();
 

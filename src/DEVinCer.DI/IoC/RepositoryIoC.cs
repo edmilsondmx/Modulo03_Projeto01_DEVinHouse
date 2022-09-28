@@ -6,7 +6,7 @@ namespace DEVinCer.DI.IoC;
 
 public static class RepositoryIoC
 {
-    public static IServiceCollection RegisterServices(this IServiceCollection builder)
+    public static IServiceCollection RegisterRepositories(this IServiceCollection builder)
     {
         return builder
             .AddScoped<IAddressRepository, AddressRepository>()
