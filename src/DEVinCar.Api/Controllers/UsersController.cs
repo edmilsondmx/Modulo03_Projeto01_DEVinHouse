@@ -9,7 +9,7 @@ using DEVinCer.Domain.Interfaces.Service;
 namespace DEVinCar.Api.Controllers;
 
 [ApiController]
-[Route("api/user")]
+[Route("api/[controller]")]
 
 public class UserController : ControllerBase
 {
