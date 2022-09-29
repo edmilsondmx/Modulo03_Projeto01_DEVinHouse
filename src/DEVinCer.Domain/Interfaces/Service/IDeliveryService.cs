@@ -4,6 +4,6 @@ namespace DEVinCer.Domain.Interfaces.Service;
 
 public interface IDeliveryService
 {
-    IList<DeliveryDTO> ListAll();
+    IList<DeliveryDTO> ListAll(int? addressId, int? saleId);
     
 }

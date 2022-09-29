@@ -13,15 +13,6 @@ namespace DEVinCar.Api.Controllers;
 public class CarController : ControllerBase
 {
     private readonly ICarService _carService;
-
-    
-    private readonly DevInCarDbContext _context;
-
-    public CarController(DevInCarDbContext context)
-    {
-        _context = context;
-    }
-
     public CarController(ICarService carService)
     {
         _carService = carService;
