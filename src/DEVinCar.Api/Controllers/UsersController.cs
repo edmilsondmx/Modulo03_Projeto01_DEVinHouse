@@ -4,6 +4,7 @@ using DEVinCar.Infra.Data;
 using DEVinCar.Domain.ViewModels;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Interfaces.Service;
 
 namespace DEVinCar.Api.Controllers;
 
@@ -12,49 +13,24 @@ namespace DEVinCar.Api.Controllers;
 
 public class UserController : ControllerBase
 {
-    private readonly DevInCarDbContext _context;
+    private readonly IUserService _userService;
 
-    public UserController(DevInCarDbContext context)
+    public UserController(IUserService userService)
     {
-        _context = context;
+        _userService = userService;
     }
 
     [HttpGet]
-    public ActionResult<List<User>> Get(
-       [FromQuery] string Name,
+    public IActionResult Get(
+       [FromQuery] string name,
        [FromQuery] DateTime? birthDateMax,
        [FromQuery] DateTime? birthDateMin
    )
     {
-        var query = _context.Users.AsQueryable();
-
-        if (!string.IsNullOrEmpty(Name))
-        {
-            query = query.Where(c => c.Name.Contains(Name));
-        }
-
-        if (birthDateMin.HasValue)
-        {
-            query = query.Where(c => c.BirthDate >= birthDateMin.Value);
-        }
-
-        if (birthDateMax.HasValue)
-        {
-            query = query.Where(c => c.BirthDate <= birthDateMax.Value);
-        }
-
-        if (!query.ToList().Any())
-        {
-            return NoContent();
-        }
-
-        return Ok(
-            query
-            .ToList()
-            );
+        return Ok(_userService.ListAll(name, birthDateMax, birthDateMin));
     }
 
-    [HttpGet("{id}")]
+    /* [HttpGet("{id}")]
     public ActionResult<User> GetById(
         [FromRoute] int id
     )
@@ -208,7 +184,7 @@ public class UserController : ControllerBase
         _context.SaveChanges();
 
         return NoContent();
-    }
+    } */
 
 
 }
