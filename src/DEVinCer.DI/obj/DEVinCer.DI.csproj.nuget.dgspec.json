@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj": {}
+    "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj": {
+    "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
+        "projectUniqueName": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
         "projectName": "DEVinCer.DI",
-        "projectPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
+        "projectPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
         "packagesPath": "C:\\Users\\Edmilson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\obj\\",
+        "outputPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -35,8 +35,8 @@
               "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj": {
                 "projectPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj"
               },
-              "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj": {
-                "projectPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj"
+              "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj": {
+                "projectPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj"
               }
             }
           }
@@ -151,14 +151,14 @@
         }
       }
     },
-    "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj": {
+    "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj",
+        "projectUniqueName": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj",
         "projectName": "DEVinCer.Infra",
-        "projectPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj",
+        "projectPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj",
         "packagesPath": "C:\\Users\\Edmilson\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\obj\\",
+        "outputPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
