@@ -4,17 +4,18 @@ using DEVinCar.Infra.Data;
 using DEVinCar.Domain.ViewModels;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Interfaces.Service;
 
 namespace DEVinCar.Api.Controllers
 {
     [ApiController]
-    [Route("api/deliver")]
+    [Route("api/[controller]")]
     public class DeliverController : ControllerBase
     {
-        private readonly DevInCarDbContext _context;
-        public DeliverController(DevInCarDbContext context)
+        private readonly IDeliveryService _deliveryService;
+        public DeliverController(IDeliveryService deliveryService)
         {
-            _context = context;
+            _deliveryService = deliveryService;
         }
 
         [HttpGet]
@@ -22,25 +23,7 @@ namespace DEVinCar.Api.Controllers
         [FromQuery] int? addressId,
         [FromQuery] int? saleId)
         {
-            var query = _context.Deliveries.AsQueryable();
-
-            if (addressId.HasValue)
-            {
-                query = query.Where(a => a.AddressId == addressId);
-            }
-
-            if (saleId.HasValue)
-            {
-                query = query.Where(s => s.SaleId == saleId);
-            }
-                      
-            if (!query.ToList().Any())
-            {
-                return NoContent();
-            }
-
-            return Ok(query.ToList());
-       
+            return Ok(_deliveryService.ListAll(addressId, saleId));
         }
     }
 }
