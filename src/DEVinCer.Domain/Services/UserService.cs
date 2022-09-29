@@ -41,7 +41,6 @@ public class UserService : IUserService
     public UserDTO GetById(int id)
     {
         var userDb = _userRepository.GetById(id);
-
         if(userDb == null)
             throw new Exception("Não existe registro!");
             //TODO: Criar exception para lista vazia!
