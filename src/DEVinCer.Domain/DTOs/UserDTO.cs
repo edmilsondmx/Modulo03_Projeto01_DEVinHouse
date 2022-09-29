@@ -24,4 +24,8 @@ public class UserDTO
     public DateTime BirthDate { get; set; }
     public Roles Role { get; set; }
     
+    public UserDTO()
+    {
+    }
+    
 }
