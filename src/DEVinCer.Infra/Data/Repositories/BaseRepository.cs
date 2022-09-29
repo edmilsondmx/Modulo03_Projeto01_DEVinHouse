@@ -29,9 +29,9 @@ public class BaseRepository <TEntity, Tkey> where TEntity : class
         _context.SaveChanges();
     }
 
-    public virtual IList<TEntity> ListAll()
+    public virtual IQueryable<TEntity> ListAll()
     {
-        return _context.Set<TEntity>().ToList();
+        return _context.Set<TEntity>();
     }
 
     public virtual TEntity GetById(Tkey id)
