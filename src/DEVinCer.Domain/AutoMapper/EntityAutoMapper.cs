@@ -23,6 +23,9 @@ public class EntityAutoMapper : Profile
         CreateMap<SaleDTO, Sale>()
             .ReverseMap();
 
+        CreateMap<BuyDTO, Sale>()
+            .ReverseMap();
+
         CreateMap<SaleCarDTO, SaleCar>()
             .ReverseMap();
 
