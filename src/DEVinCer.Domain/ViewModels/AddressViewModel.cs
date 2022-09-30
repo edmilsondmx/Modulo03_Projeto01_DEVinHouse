@@ -1,3 +1,5 @@
+using DEVinCar.Domain.Models;
+
 namespace DEVinCar.Domain.ViewModels;
 public class AddressViewModel {
     public int Id { get; set; }
@@ -7,6 +9,7 @@ public class AddressViewModel {
     public int Number { get; set; }
     public string Complement { get; set; }
     public string CityName { get; set; }
+    public virtual City City { get; set; }
 
     public AddressViewModel(int id,string street,int cityId,string cityName,int number,string complement, string cep) {
         Id = id;
@@ -16,6 +19,11 @@ public class AddressViewModel {
         Number = number;
         Complement = complement;
         Cep = cep;
+    }
+
+    public AddressViewModel()
+    {
+        
     }
 }
 

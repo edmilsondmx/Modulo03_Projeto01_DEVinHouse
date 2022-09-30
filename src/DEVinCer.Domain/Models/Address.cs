@@ -1,3 +1,5 @@
+using DEVinCar.Domain.DTOs;
+
 namespace DEVinCar.Domain.Models;
 
 public class Address
@@ -12,4 +14,16 @@ public class Address
     public virtual City City { get; set; }
 
     public virtual List<Delivery> Deliveries {get; set;}
+
+    public Address()
+    {
+    }
+
+    public void Update(AddressPatchDTO dto)
+    {
+        Street = dto.Street;
+        Cep = dto.Cep;
+        Number = dto.Number;
+        Complement = dto.Complement;
+    }
 }
