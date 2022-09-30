@@ -1,6 +1,7 @@
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
+using DEVinCar.Domain.ViewModels;
 
 namespace DEVinCer.Domain.AutoMapper;
 
@@ -8,6 +9,9 @@ public class EntityAutoMapper : Profile
 {
     public EntityAutoMapper()
     {
+        CreateMap<Address, AddressViewModel>()
+            .ReverseMap();
+
         CreateMap<AdressDTO, Address>()
             .ReverseMap();
 
