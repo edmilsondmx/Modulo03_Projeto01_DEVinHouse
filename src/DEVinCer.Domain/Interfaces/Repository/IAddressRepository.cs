@@ -2,9 +2,6 @@ using DEVinCar.Domain.Models;
 
 namespace DEVinCer.Domain.Interfaces.Repository;
 
-public interface IAddressRepository
+public interface IAddressRepository : IBaseRepository<Address, int>
 {
-    IQueryable<Address> ListAll();
-    void Update(Address address);
-    void Delete(Address adress);
 }

@@ -83,7 +83,7 @@ public class UserService : IUserService
         Sale buy = _mapper.Map<Sale>(dto);
         buy.BuyerId = userId;
 
-        _userRepository.InsertSale(buy);
+        _userRepository.InsertBuy(buy);
     }
 
     public void InsertSale(int userId, SaleDTO dto)

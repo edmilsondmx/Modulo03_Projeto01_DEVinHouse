@@ -2,7 +2,6 @@ using DEVinCar.Domain.Models;
 
 namespace DEVinCer.Domain.Interfaces.Repository;
 
-public interface IDeliveryRepository
+public interface IDeliveryRepository : IBaseRepository<Delivery, int>
 {
-    IQueryable<Delivery> ListAll();
 }

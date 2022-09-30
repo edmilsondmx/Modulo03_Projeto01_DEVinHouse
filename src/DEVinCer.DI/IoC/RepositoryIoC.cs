@@ -14,6 +14,7 @@ public static class RepositoryIoC
             .AddScoped<IDeliveryRepository, DeliveryRepository>()
             .AddScoped<ISaleRepository, SaleRepository>()
             .AddScoped<IStateRepository, StateRepository>()
-            .AddScoped<IUserRepository, UserRepository>();
+            .AddScoped<IUserRepository, UserRepository>()
+            .AddScoped<ISaleCarRepository, SaleCarRepository>();
     }
 }
