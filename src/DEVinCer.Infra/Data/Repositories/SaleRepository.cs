@@ -4,7 +4,7 @@ using DEVinCer.Domain.Interfaces.Repository;
 
 namespace DEVinCer.Infra.Data.Repositories;
 
-public class SaleRepository : BaseRepository<SaleCar, int>, ISaleRepository
+public class SaleRepository : BaseRepository<Sale, int>, ISaleRepository
 {
     public SaleRepository(DevInCarDbContext context) : base (context)
     {

@@ -1,32 +1,104 @@
+using AutoMapper;
 using DEVinCar.Domain.DTOs;
+using DEVinCar.Domain.Models;
+using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
 
 namespace DEVinCer.Domain.Services;
 
 public class SaleService : ISaleService
 {
-    public SaleCarDTO GetById(int id)
+    private readonly ISaleRepository _saleRepository;
+    private readonly ICarRepository _carRepository;
+    private readonly IAddressRepository _addressRepository;
+    private readonly ISaleCarRepository _saleCarRepository;
+    private readonly IMapper _mapper;
+
+    public SaleService(ISaleRepository saleRepository, IMapper mapper, ICarRepository carRepository, IAddressRepository addressRepository, ISaleCarRepository saleCarRepository)
     {
-        throw new NotImplementedException();
+        _saleRepository = saleRepository;
+        _mapper = mapper;
+        _carRepository = carRepository;
+        _addressRepository = addressRepository;
+        _saleCarRepository = saleCarRepository;
     }
 
-    public void InsertDelivery(DeliveryDTO dto)
+    public SaleViewModel GetById(int id)
     {
-        throw new NotImplementedException();
+        var sale = _saleRepository.GetById(id);
+        if(sale == null)
+            throw new Exception("Não existe registro!");
+
+        return _mapper.Map<SaleViewModel>(sale);
+
     }
 
-    public void InsertSale(SaleCarDTO dto)
+    public void InsertDelivery(DeliveryDTO dto, int id)
     {
-        throw new NotImplementedException();
+        var sale = _saleRepository.GetById(id);
+        var address = _addressRepository.GetById(dto.AddressId);
+
+        if(sale == null || address == null)
+            throw new Exception("Not found");
+        
+        if(dto.DeliveryForecast < DateTime.Now.Date)
+            throw new Exception("Bad request");
+        
+        if(dto.DeliveryForecast == null)
+            dto.DeliveryForecast = DateTime.Now.AddDays(7);
+        
+        _saleRepository.InsertDelivery(_mapper.Map<Delivery>(dto));
     }
 
-    public void UpdateAmount(int amount)
+    public void InsertSale(SaleCarDTO dto, int id)
     {
-        throw new NotImplementedException();
+        var car = _carRepository.GetById(dto.CarId);
+        var sale = _saleRepository.GetById(dto.SaleId);
+
+        if(car == null && sale == null)
+            throw new Exception("Not found");
+        
+        if (dto.UnitPrice <= 0 || dto.Amount <= 0)
+            throw new Exception("Bad request");
+
+        if (dto.UnitPrice == null)
+            dto.UnitPrice = car.SuggestedPrice;
+        
+        if (dto.Amount == null)
+            dto.Amount = 1;
+
+        _saleRepository.InsertSale(_mapper.Map<SaleCar>(dto));
     }
 
-    public void UpdatePrice(decimal price)
+    public void UpdateAmount(int saleId, int carId, int amount)
     {
-        throw new NotImplementedException();
+        var sale = _saleRepository.GetById(saleId);
+        var saleCar = _saleCarRepository.GetById(carId);
+
+        if(sale == null || saleCar == null)
+            throw new Exception("Not found");
+
+        if(amount <= 0)
+            throw new Exception("Bad request");
+        
+        saleCar.Amount = amount;
+        _saleRepository.UpdateAmount(saleCar);
+
+    }
+
+    public void UpdatePrice(int saleId, int carId, decimal unitPrice)
+    {
+        var sale = _saleRepository.GetById(saleId);
+        var saleCar = _saleCarRepository.GetById(carId);
+
+        if(sale == null || saleCar == null)
+            throw new Exception("Not found");
+
+        if(unitPrice <= 0)
+            throw new Exception("Bad request");
+        
+        saleCar.UnitPrice = unitPrice;
+        _saleRepository.UpdateAmount(saleCar);
     }
 }
