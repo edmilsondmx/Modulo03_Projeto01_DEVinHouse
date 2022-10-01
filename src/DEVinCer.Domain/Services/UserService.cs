@@ -123,11 +123,6 @@ public class UserService : IUserService
         return _mapper.Map<IList<UserDTO>>(query).ToList();
     }
 
-    public IList<UserDTO> ListAll()
-    {
-        throw new NotImplementedException();
-    }
-
     private bool IsExists(UserDTO user)
     {
         return _userRepository.ListAll()

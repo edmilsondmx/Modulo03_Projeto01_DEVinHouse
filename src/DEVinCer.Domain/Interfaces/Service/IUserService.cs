@@ -4,7 +4,6 @@ namespace DEVinCer.Domain.Interfaces.Service;
 
 public interface IUserService
 {
-    IList<UserDTO> ListAll();
     IList<UserDTO> ListAll(string name, DateTime? birthDateMax, DateTime? birthDateMin);
     UserDTO GetById(int id);
     IList<SaleDTO> GetBuyerByUserID(int id);
