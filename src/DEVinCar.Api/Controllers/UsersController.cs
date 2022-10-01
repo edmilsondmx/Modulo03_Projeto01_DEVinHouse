@@ -27,7 +27,9 @@ public class UserController : ControllerBase
        [FromQuery] DateTime? birthDateMin
     )
     {
-        return Ok(_userService.ListAll(name, birthDateMax, birthDateMin));
+        var users = _userService.ListAll(name, birthDateMax, birthDateMin).ToLookup(u => u.Password = "*******");
+        
+        return Ok(users);
     }
 
     [HttpGet("{id}")]
