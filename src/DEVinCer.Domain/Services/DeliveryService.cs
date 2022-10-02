@@ -1,5 +1,6 @@
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
+using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
 
@@ -27,7 +28,7 @@ public class DeliveryService : IDeliveryService
             query = query.Where(s => s.SaleId == saleId);
         
         if (!query.ToList().Any())
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Registers not found!");
 
         return _mapper.Map<IList<DeliveryDTO>>(query).ToList();
     }
