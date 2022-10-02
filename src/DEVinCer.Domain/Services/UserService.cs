@@ -1,6 +1,7 @@
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
 
@@ -21,19 +22,16 @@ public class UserService : IUserService
     {
         var userDb = _userRepository.GetById(id);
         if(userDb == null)
-            throw new Exception("Não existe registro!");
-            //TODO: Criar exception para lista vazia!
+            throw new IsExistsException("User not found!");
         
         _userRepository.Delete(userDb);
-
     }
 
     public IList<SaleDTO> GetBuyerByUserID(int id)
     {
         var buyerByUserId = _userRepository.GetBuyerByUserID(id);
         if(!buyerByUserId.ToList().Any())
-            throw new Exception("Não existe registro!");
-            //TODO: Criar exception para lista vazia!
+            throw new IsExistsException("Registers not found!");
         
         return _mapper.Map<IList<SaleDTO>>(buyerByUserId);
     }
@@ -42,8 +40,7 @@ public class UserService : IUserService
     {
         var userDb = _userRepository.GetById(id);
         if(userDb == null)
-            throw new Exception("Não existe registro!");
-            //TODO: Criar exception para lista vazia!
+            throw new IsExistsException("User not found!");
         
         return _mapper.Map<UserDTO>(userDb);
     }
@@ -52,8 +49,7 @@ public class UserService : IUserService
     {
         var salesByUserId = _userRepository.GetSalesByUserID(id);
         if(!salesByUserId.ToList().Any())
-            throw new Exception("Não existe registro!");
-            //TODO: Criar exception para lista vazia!
+            throw new IsExistsException("Registers not found!");
         
         return _mapper.Map<IList<SaleDTO>>(salesByUserId);
     }
@@ -61,8 +57,7 @@ public class UserService : IUserService
     public void Insert(UserDTO dto)
     {
         if(IsExists(dto))
-            throw new Exception("Usuario já cadastrado");
-            //TODO: Criar exception usuario já cadastrado!
+            throw new NotAcceptableException("User already registered!");
         
         _userRepository.Insert(_mapper.Map<User>(dto));
     }
@@ -73,12 +68,10 @@ public class UserService : IUserService
         var seller = _userRepository.GetById(dto.SellerId);
 
         if(!IsExists(_mapper.Map<UserDTO>(userDb)))
-            throw new Exception("Usuario não encontrado!");
-            //TODO: Criar exception usuario já cadastrado!
+            throw new IsExistsException("User not found!");
 
         if(!IsExists(_mapper.Map<UserDTO>(seller)))
-            throw new Exception("Comprador não encontrado!");
-            //TODO: Criar exception usuario já cadastrado!
+            throw new IsExistsException("Seller not found!");
         
         Sale buy = _mapper.Map<Sale>(dto);
         buy.BuyerId = userId;
@@ -92,12 +85,10 @@ public class UserService : IUserService
         var buyer = _userRepository.GetById(dto.BuyerId);
 
         if(!IsExists(_mapper.Map<UserDTO>(userDb)))
-            throw new Exception("Usuario não encontrado!");
-            //TODO: Criar exception usuario já cadastrado!
+            throw new IsExistsException("User not found!");
 
         if(!IsExists(_mapper.Map<UserDTO>(buyer)))
-            throw new Exception("Comprador não encontrado!");
-            //TODO: Criar exception usuario já cadastrado!
+            throw new IsExistsException("Buyer not found!");
         
         dto.SellerId = userId;
         _userRepository.InsertSale(_mapper.Map<Sale>(dto));
@@ -117,7 +108,7 @@ public class UserService : IUserService
             query = query.Where(c => c.BirthDate <= birthDateMax.Value);
 
         if (!query.ToList().Any())
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Registers not found!");
             //TODO: Criar exception para lista vazia!
         
         return _mapper.Map<IList<UserDTO>>(query).ToList();
