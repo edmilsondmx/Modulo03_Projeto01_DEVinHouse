@@ -26,7 +26,7 @@ public class CarService : ICarService
         var soldCar = _saleCarRepository.ListAll().Any(s => s.CarId == id);
 
         if(carDb == null)
-            throw new IsExistsException("Registers not found!");
+            throw new IsExistsException("Vehicle not found!");
 
         if(soldCar)
             throw new BadRequestException("Vehicle already sold!");
@@ -38,7 +38,7 @@ public class CarService : ICarService
     {
         var carDb = _carRepository.GetById(id);
         if(carDb == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("Vehicle not found!");
         
         return _mapper.Map<CarDTO>(carDb);
     }
@@ -83,7 +83,7 @@ public class CarService : ICarService
             .Any(c => c.Name == dto.Name && c.Id != dto.Id);
 
         if(carDb == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("Vehicle not found!");
     
         if(isNameExist)
             throw new NotAcceptableException("Name already registered!");

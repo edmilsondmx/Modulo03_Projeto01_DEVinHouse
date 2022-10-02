@@ -27,7 +27,7 @@ public class AddressService : IAddressService
         var relation = _deliveryRepository.ListAll().FirstOrDefault(d => d.AddressId == id);
 
         if(addressDb == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("Address not found!");
 
         if(relation != null)
             throw new BadRequestException("The address is related to a delivery");
@@ -66,7 +66,7 @@ public class AddressService : IAddressService
             .ListAll().FirstOrDefault(a => a.Id == id);
 
         if (addressDb == null)
-            throw new IsExistsException("Registers not found!");
+            throw new IsExistsException("Address not found!");
         
         if(addressPatchDTO.Number <= 0)
             throw new NotAcceptableException("Add a valid number!");

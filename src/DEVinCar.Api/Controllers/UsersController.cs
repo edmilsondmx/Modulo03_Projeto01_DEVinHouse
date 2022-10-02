@@ -41,7 +41,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet("{userId}/buy")]
-    public ActionResult<Sale> GetByIdbuy(
+    public IActionResult GetByIdbuy(
        [FromRoute] int userId
     )
     {
@@ -49,7 +49,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet("{userId}/sales")]
-    public ActionResult<Sale> GetSalesBySellerId(
+    public IActionResult GetSalesBySellerId(
        [FromRoute] int userId
     )
     {
@@ -66,7 +66,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("{userId}/sales")]
-    public ActionResult<Sale> PostSaleUserId(
+    public IActionResult PostSaleUserId(
         [FromRoute] int userId,
         [FromBody] SaleDTO body
     )
@@ -76,7 +76,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("{userId}/buy")]
-    public ActionResult<Sale> PostBuyUserId(
+    public IActionResult PostBuyUserId(
         [FromRoute] int userId,
         [FromBody] BuyDTO body
     )
@@ -87,7 +87,7 @@ public class UserController : ControllerBase
       
 
     [HttpDelete("{userId}")]
-    public ActionResult Delete(
+    public IActionResult Delete(
        [FromRoute] int userId
     )
     {

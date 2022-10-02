@@ -33,7 +33,7 @@ public class StateService : IStateService
             query = query.Where(c => c.Name.Contains(name));
         
         if(!existsState)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("State not found!");
 
         if(!query.ToList().Any())
             throw new IsExistsException("Registers not found!");
@@ -47,7 +47,7 @@ public class StateService : IStateService
         var city = _cityRepository.GetById(cityId);
 
         if(city == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("City not found!");
 
         if(city.StateId != stateId)
             throw new BadRequestException("City is not part of the informed state!");
@@ -60,7 +60,7 @@ public class StateService : IStateService
         var stateDb = _stateRepository.GetById(stateId);
 
         if(stateDb == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("State not found!");
         
         return _mapper.Map<GetStateByIdViewModel>(stateDb);
     }
@@ -70,7 +70,7 @@ public class StateService : IStateService
         var city = _cityRepository.GetById(cityId);
 
         if(city == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("City not found!");
 
         if(city.StateId != stateId)
             throw new BadRequestException("City is not part of the informed state!");
@@ -84,7 +84,7 @@ public class StateService : IStateService
         var existsCity = _cityRepository.ListAll().Any(c => c.Name == city.Name && c.StateId == city.StateId);
 
         if(state == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("State not found!");
 
         if(existsCity)
             throw new NotAcceptableException("City already registered!");

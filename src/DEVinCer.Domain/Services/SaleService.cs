@@ -29,7 +29,7 @@ public class SaleService : ISaleService
     {
         var sale = _saleRepository.GetById(id);
         if(sale == null)
-            throw new IsExistsException("Register not found!");
+            throw new IsExistsException("Sale not found!");
 
         return _mapper.Map<SaleViewModel>(sale);
 

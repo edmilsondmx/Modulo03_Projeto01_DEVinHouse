@@ -19,7 +19,7 @@ namespace DEVinCar.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult<Delivery> Get(
+        public IActionResult Get(
         [FromQuery] int? addressId,
         [FromQuery] int? saleId)
         {
