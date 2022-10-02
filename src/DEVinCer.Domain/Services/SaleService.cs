@@ -2,6 +2,7 @@ using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
 
@@ -28,7 +29,7 @@ public class SaleService : ISaleService
     {
         var sale = _saleRepository.GetById(id);
         if(sale == null)
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Register not found!");
 
         return _mapper.Map<SaleViewModel>(sale);
 
@@ -40,10 +41,10 @@ public class SaleService : ISaleService
         var address = _addressRepository.GetById(dto.AddressId);
 
         if(sale == null || address == null)
-            throw new Exception("Not found");
+            throw new IsExistsException("Registers not found!");
         
         if(dto.DeliveryForecast < DateTime.Now.Date)
-            throw new Exception("Bad request");
+            throw new BadRequestException("Delivery forecast less than current date!");
         
         if(dto.DeliveryForecast == null)
             dto.DeliveryForecast = DateTime.Now.AddDays(7);
@@ -57,10 +58,10 @@ public class SaleService : ISaleService
         var sale = _saleRepository.GetById(dto.SaleId);
 
         if(car == null && sale == null)
-            throw new Exception("Not found");
+            throw new IsExistsException("Registers not found!");
         
         if (dto.UnitPrice <= 0 || dto.Amount <= 0)
-            throw new Exception("Bad request");
+            throw new BadRequestException("Amount and price must be greater than zero!");
 
         if (dto.UnitPrice == null)
             dto.UnitPrice = car.SuggestedPrice;
@@ -77,14 +78,13 @@ public class SaleService : ISaleService
         var saleCar = _saleCarRepository.GetById(carId);
 
         if(sale == null || saleCar == null)
-            throw new Exception("Not found");
+            throw new IsExistsException("Registers not found!");
 
         if(amount <= 0)
-            throw new Exception("Bad request");
+            throw new BadRequestException("Amount must be greater than zero!");
         
         saleCar.Amount = amount;
         _saleRepository.UpdateAmount(saleCar);
-
     }
 
     public void UpdatePrice(int saleId, int carId, decimal unitPrice)
@@ -93,10 +93,10 @@ public class SaleService : ISaleService
         var saleCar = _saleCarRepository.GetById(carId);
 
         if(sale == null || saleCar == null)
-            throw new Exception("Not found");
+            throw new IsExistsException("Registers not found!");
 
         if(unitPrice <= 0)
-            throw new Exception("Bad request");
+            throw new BadRequestException("Price must be greater than zero!");
         
         saleCar.UnitPrice = unitPrice;
         _saleRepository.UpdateAmount(saleCar);
