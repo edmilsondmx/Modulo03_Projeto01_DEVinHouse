@@ -34,6 +34,16 @@ public class ErrorMiddleware
             status = HttpStatusCode.NotFound;
             message = ex.Message;
         }
+        if(ex is BadRequestException)
+        {
+            status = HttpStatusCode.BadRequest;
+            message = ex.Message;
+        }
+        if(ex is NotAcceptableException)
+        {
+            status = HttpStatusCode.NotAcceptable;
+            message = ex.Message;
+        }
         else
         {
             status = HttpStatusCode.InternalServerError;
