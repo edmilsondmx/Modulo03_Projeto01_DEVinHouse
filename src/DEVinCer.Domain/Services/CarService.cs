@@ -1,6 +1,7 @@
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
 
@@ -25,10 +26,10 @@ public class CarService : ICarService
         var soldCar = _saleCarRepository.ListAll().Any(s => s.CarId == id);
 
         if(carDb == null)
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Registers not found!");
 
         if(soldCar)
-            throw new Exception("Carro já vendido!");
+            throw new BadRequestException("Vehicle already sold!");
         
         _carRepository.Delete(carDb);
     }
@@ -37,8 +38,7 @@ public class CarService : ICarService
     {
         var carDb = _carRepository.GetById(id);
         if(carDb == null)
-            throw new Exception("Não existe registro!");
-            //TODO: Criar exception para lista vazia!
+            throw new IsExistsException("Register not found!");
         
         return _mapper.Map<CarDTO>(carDb);
     }
@@ -46,12 +46,12 @@ public class CarService : ICarService
     public void Insert(CarDTO dto)
     {
         if(IsExists(dto))
-            throw new Exception("Carro já cadastrado");
+            throw new NotAcceptableException("vehicle already registered!");
+
         if(dto.SuggestedPrice <= 0)
-            throw new Exception("O preço não pode ser 0");
+            throw new NotAcceptableException("The price cannot be zero");
 
         _carRepository.Insert(_mapper.Map<Car>(dto));
-
     }
 
     public IList<CarDTO> ListAll(string name, decimal? priceMin, decimal? priceMax)
@@ -62,7 +62,7 @@ public class CarService : ICarService
             query = query.Where(c => c.Name.Contains(name));
         
         if (priceMin > priceMax)
-            throw new Exception("Erro nos parametros");
+            throw new NotAcceptableException("Error in parameters!");
         
         if (priceMin.HasValue)
             query = query.Where(c => c.SuggestedPrice >= priceMin);
@@ -71,7 +71,7 @@ public class CarService : ICarService
             query = query.Where(c => c.SuggestedPrice <= priceMax);
 
         if (!query.ToList().Any())
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Registers not found!");
         
         return _mapper.Map<IList<CarDTO>>(query).ToList();        
     }
@@ -83,13 +83,13 @@ public class CarService : ICarService
             .Any(c => c.Name == dto.Name && c.Id != dto.Id);
 
         if(carDb == null)
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Register not found!");
     
         if(isNameExist)
-            throw new Exception("Nome já cadastrado");
+            throw new NotAcceptableException("Name already registered!");
         
         if (dto.SuggestedPrice <= 0)
-            throw new Exception("O preço não pode ser 0");
+            throw new NotAcceptableException("The price cannot be zero");
         
         carDb.Update(dto);
         _carRepository.Update(carDb);
