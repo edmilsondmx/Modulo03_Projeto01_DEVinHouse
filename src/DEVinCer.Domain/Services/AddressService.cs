@@ -1,6 +1,7 @@
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
 
@@ -21,15 +22,15 @@ public class AddressService : IAddressService
 
     public void Delete(int id)
     {
-        var addressDb = _addressRepository.ListAll().FirstOrDefault(a => a.Id == id);
+        var addressDb = _addressRepository.GetById(id);
 
         var relation = _deliveryRepository.ListAll().FirstOrDefault(d => d.AddressId == id);
 
         if(addressDb == null)
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Register not found!");
 
         if(relation != null)
-            throw new Exception("O endereço está relacionado a uma entrega");
+            throw new BadRequestException("The address is related to a delivery");
 
         _addressRepository.Delete(addressDb);
     }
@@ -54,7 +55,7 @@ public class AddressService : IAddressService
             query = query.Where(a => a.Cep == cep);
 
         if (!query.ToList().Any())
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Registers not found!");
 
         return _mapper.Map<IList<AddressViewModel>>(query).ToList();
     }
@@ -65,13 +66,13 @@ public class AddressService : IAddressService
             .ListAll().FirstOrDefault(a => a.Id == id);
 
         if (addressDb == null)
-            throw new Exception("Não existe registro!");
+            throw new IsExistsException("Registers not found!");
         
         if(addressPatchDTO.Number <= 0)
-            throw new Exception("adicione um numero valido");
+            throw new NotAcceptableException("Add a valid number!");
 
         if (!addressPatchDTO.Cep.All(char.IsDigit))
-                throw new Exception("Every characters in cep must be numeric.");
+            throw new NotAcceptableException("Every characters in cep must be numeric.");
 
         addressDb.Update(addressPatchDTO);
         _addressRepository.Update(addressDb);        
