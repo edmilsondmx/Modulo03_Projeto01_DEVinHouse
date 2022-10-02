@@ -3,6 +3,7 @@ using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
 
@@ -32,10 +33,10 @@ public class StateService : IStateService
             query = query.Where(c => c.Name.Contains(name));
         
         if(!existsState)
-            throw new Exception("not found");
+            throw new IsExistsException("Register not found!");
 
         if(!query.ToList().Any())
-            throw new Exception("not found");
+            throw new IsExistsException("Registers not found!");
 
         return _mapper.Map<IList<GetCityByIdViewModel>>(query).ToList();
 
@@ -43,14 +44,13 @@ public class StateService : IStateService
 
     public GetCityByIdViewModel GetCityById(int stateId, int cityId)
     {
-        var state = _stateRepository.GetById(stateId);
         var city = _cityRepository.GetById(cityId);
 
-        if(state == null || city == null)
-            throw new Exception("not found");
+        if(city == null)
+            throw new IsExistsException("Register not found!");
 
-        if(city.StateId != state.Id)
-            throw new Exception("not found");
+        if(city.StateId != stateId)
+            throw new BadRequestException("City is not part of the informed state!");
 
         return _mapper.Map<GetCityByIdViewModel>(city);
     }
@@ -60,21 +60,20 @@ public class StateService : IStateService
         var stateDb = _stateRepository.GetById(stateId);
 
         if(stateDb == null)
-            throw new Exception("not found");
+            throw new IsExistsException("Register not found!");
         
         return _mapper.Map<GetStateByIdViewModel>(stateDb);
     }
 
     public void InsertAdress(int stateId, int cityId, AdressDTO address)
     {
-        var state = _stateRepository.GetById(stateId);
         var city = _cityRepository.GetById(cityId);
 
-        if(state == null || city == null)
-            throw new Exception("not found");
+        if(city == null)
+            throw new IsExistsException("Register not found!");
 
-        if(city.StateId != state.Id)
-            throw new Exception("not found");
+        if(city.StateId != stateId)
+            throw new BadRequestException("City is not part of the informed state!");
 
         _addressRepository.Insert(_mapper.Map<Address>(address));
     }
@@ -85,10 +84,10 @@ public class StateService : IStateService
         var existsCity = _cityRepository.ListAll().Any(c => c.Name == city.Name && c.StateId == city.StateId);
 
         if(state == null)
-            throw new Exception("Not found");
+            throw new IsExistsException("Register not found!");
 
-        if(!existsCity)
-            throw new Exception("Bad request");
+        if(existsCity)
+            throw new NotAcceptableException("City already registered!");
             
         _cityRepository.Insert(_mapper.Map<City>(city));
     }
@@ -101,7 +100,7 @@ public class StateService : IStateService
             query = query.Where(s => s.Name.Contains(name));
 
         if(!query.ToList().Any())
-            throw new Exception("Not found");
+            throw new IsExistsException("Registers not found!");;
 
         return _mapper.Map<IList<GetStateViewModel>>(query).ToList();
     }
