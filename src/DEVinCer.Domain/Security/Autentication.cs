@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 
-namespace DEVinCer.DI.Autentication;
+namespace DEVinCer.Domain.Security;
 
-public static class JwtBearer
+public static class Autentication
 {
-    public static byte[] key = Encoding.ASCII.GetBytes("Settings.Secret");
+    public static byte[] key = Encoding.ASCII.GetBytes(Settings.Secret);
 
     public static AuthenticationBuilder RegisterAuthentication(this IServiceCollection builder)
     {
@@ -30,5 +30,4 @@ public static class JwtBearer
                 };
             });
     }
-
 }

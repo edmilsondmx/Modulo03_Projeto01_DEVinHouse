@@ -5,12 +5,13 @@ using DEVinCar.Domain.ViewModels;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Interfaces.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DEVinCar.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-
+[Authorize]
 public class UserController : ControllerBase
 {
     private readonly IUserService _userService;

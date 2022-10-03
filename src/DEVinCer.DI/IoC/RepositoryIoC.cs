@@ -11,6 +11,7 @@ public static class RepositoryIoC
         return builder
             .AddScoped<IAddressRepository, AddressRepository>()
             .AddScoped<ICarRepository, CarRepository>()
+            .AddScoped<ICityRepository, CityRepository>()
             .AddScoped<IDeliveryRepository, DeliveryRepository>()
             .AddScoped<ISaleRepository, SaleRepository>()
             .AddScoped<IStateRepository, StateRepository>()

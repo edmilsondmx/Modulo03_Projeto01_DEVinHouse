@@ -1,6 +1,7 @@
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
+using DEVinCer.Domain.DTOs;
 using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
@@ -12,7 +13,7 @@ public class UserService : IUserService
     private readonly IUserRepository _userRepository;
     private readonly IMapper  _mapper;
 
-    public UserService(IUserRepository userRepository, IMapper  mapper)
+    public UserService(IUserRepository userRepository, IMapper mapper)
     {
         _userRepository = userRepository;
         _mapper = mapper;
@@ -42,6 +43,15 @@ public class UserService : IUserService
         if(userDb == null)
             throw new IsExistsException("User not found!");
         
+        return _mapper.Map<UserDTO>(userDb);
+    }
+
+    public UserDTO GetByUser(LoginDTO login)
+    {
+        var userDb = _userRepository.GetByUser(login);
+        if(userDb == null)
+            throw new AutenticationException("User not authenticated!");
+
         return _mapper.Map<UserDTO>(userDb);
     }
 

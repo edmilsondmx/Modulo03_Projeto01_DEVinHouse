@@ -1,5 +1,6 @@
 using DEVinCar.Domain.Models;
 using DEVinCar.Infra.Data;
+using DEVinCer.Domain.DTOs;
 using DEVinCer.Domain.Interfaces.Repository;
 
 namespace DEVinCer.Infra.Data.Repositories;
@@ -15,6 +16,11 @@ public class UserRepository : BaseRepository<User, int>, IUserRepository
         return _context.Sales
             .Where(s => s.BuyerId == id)
             .ToList();
+    }
+
+    public User GetByUser(LoginDTO login)
+    {
+        return _context.Users.FirstOrDefault(u => u.Email == login.Email && u.Password == login.Password);
     }
 
     public IList<Sale> GetSalesByUserID(int id)

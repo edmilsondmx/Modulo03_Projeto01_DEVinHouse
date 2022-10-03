@@ -5,11 +5,13 @@ using DEVinCar.Domain.ViewModels;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Interfaces.Service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DEVinCar.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class StatesController : ControllerBase
 {
     private readonly IStateService _stateService;
@@ -60,7 +62,9 @@ public class StatesController : ControllerBase
         [FromQuery] string name
     ) 
     {
-        return Ok(_stateService.ListAll(name));
+        var states = _stateService.ListAll(name);
+
+        return Ok();
     }
 
     [HttpGet("{stateId}/city")]

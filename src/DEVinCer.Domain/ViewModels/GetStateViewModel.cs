@@ -1,3 +1,5 @@
+using DEVinCar.Domain.Models;
+
 namespace DEVinCar.Domain.ViewModels;
 public class GetStateViewModel {
     public int Id { get; set; }
@@ -11,6 +13,13 @@ public class GetStateViewModel {
         Name = name;
         Initials = intials;
         Cities = new List<string>();
+    }
+
+    public GetStateViewModel(State state)
+    {
+        Id = state.Id;
+        Name = state.Name;
+        Initials = state.Initials;
     }
 }
 
