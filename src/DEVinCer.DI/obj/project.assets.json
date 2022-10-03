@@ -992,7 +992,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "AutoMapper": "11.0.1"
+          "AutoMapper": "11.0.1",
+          "Microsoft.AspNetCore.Authentication": "2.2.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.9"
         },
         "compile": {
           "bin/placeholder/DEVinCer.Domain.dll": {}
@@ -2919,11 +2921,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
+      "projectUniqueName": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
       "projectName": "DEVinCer.DI",
-      "projectPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
+      "projectPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\DEVinCer.DI.csproj",
       "packagesPath": "C:\\Users\\Edmilson\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\obj\\",
+      "outputPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.DI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2944,11 +2946,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj": {
-              "projectPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj"
+            "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj": {
+              "projectPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj"
             },
-            "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj": {
-              "projectPath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj"
+            "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj": {
+              "projectPath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Infra\\DEVinCer.Infra.csproj"
             }
           }
         }
