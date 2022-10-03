@@ -44,6 +44,11 @@ public class ErrorMiddleware
             status = HttpStatusCode.NotAcceptable;
             message = ex.Message;
         }
+        if(ex is AutenticationException)
+        {
+            status = HttpStatusCode.Forbidden;
+            message = ex.Message;
+        }
         else
         {
             status = HttpStatusCode.InternalServerError;
