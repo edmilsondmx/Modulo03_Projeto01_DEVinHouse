@@ -21,7 +21,7 @@ public class EntityAutoMapper : Profile
         CreateMap<GetCityByIdViewModel, City>()
             .ReverseMap();
 
-        CreateMap<GetStateByIdViewModel, City>()
+        CreateMap<GetStateByIdViewModel, State>()
             .ReverseMap();
         
         CreateMap<CarDTO, Car>()
@@ -47,7 +47,5 @@ public class EntityAutoMapper : Profile
 
         CreateMap<UserDTO, User>()
             .ReverseMap();
-
-
     }
 }
