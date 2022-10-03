@@ -1,4 +1,3 @@
-
 using AutoMapper;
 using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
@@ -16,12 +15,12 @@ public class StateService : IStateService
     private readonly IAddressRepository _addressRepository;
     private readonly IMapper _mapper;
 
-    public StateService(IStateRepository stateRepository, ICityRepository cityRepository, IMapper mapper, IAddressRepository addressRepository)
+    public StateService(IStateRepository stateRepository, ICityRepository cityRepository, IAddressRepository addressRepository, IMapper mapper)
     {
         _stateRepository = stateRepository;
         _cityRepository = cityRepository;
-        _mapper = mapper;
         _addressRepository = addressRepository;
+        _mapper = mapper;
     }
 
     public IList<GetCityByIdViewModel> GetCitiesByStateId(int stateId, string name)
@@ -100,8 +99,10 @@ public class StateService : IStateService
             query = query.Where(s => s.Name.Contains(name));
 
         if(!query.ToList().Any())
-            throw new IsExistsException("Registers not found!");;
+            throw new IsExistsException("Registers not found!");
 
-        return _mapper.Map<IList<GetStateViewModel>>(query).ToList();
+        var states = query.Select(s => new GetStateViewModel(s)).ToList();
+
+        return states;
     }
 }
