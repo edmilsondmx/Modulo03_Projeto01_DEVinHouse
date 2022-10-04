@@ -6,6 +6,9 @@ using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Caching.Memory;
+using DEVinCar.Api.Config;
+using DEVinCer.Domain.Services;
 
 namespace DEVinCar.Api.Controllers;
 
@@ -15,9 +18,14 @@ namespace DEVinCar.Api.Controllers;
 public class CarController : ControllerBase
 {
     private readonly ICarService _carService;
-    public CarController(ICarService carService)
+    private readonly IMemoryCache _cache;
+    private readonly CacheService<CarDTO> _carCache;
+    public CarController(ICarService carService, IMemoryCache cache, CacheService<CarDTO> carCache)
     {
         _carService = carService;
+        _cache = cache;
+        _carCache = carCache;
+        carCache.Config("car", new TimeSpan(0,5,0));
     }
 
     [HttpGet("{carId}")]
@@ -25,7 +33,15 @@ public class CarController : ControllerBase
         [FromRoute] int carId
     )
     {
-        return Ok(_carService.GetById(carId));
+        CarDTO carDb;
+
+        if(!_carCache.TryGetValue($"{carId}", out carDb))
+        {
+            carDb = _carService.GetById(carId);
+            _carCache.Set($"{carId}", carDb);
+        }
+
+        return Ok(carDb);
     }
 
     [HttpGet]
@@ -40,11 +56,11 @@ public class CarController : ControllerBase
 
     [HttpPost]
     public IActionResult Post(
-        [FromBody] CarDTO body
+        [FromBody] CarDTO carDto
     )
     {
-        _carService.Insert(body);
-        return Created("api/car", body);
+        _carService.Insert(carDto);
+        return Created("api/car", carDto);
     }
 
     [HttpDelete("{carId}")]
@@ -53,6 +69,8 @@ public class CarController : ControllerBase
     )
     {
         _carService.Delete(carId);
+        _carCache.Remove($"{carId}");
+
         return NoContent();
     }
 
@@ -64,6 +82,9 @@ public class CarController : ControllerBase
     {
         carDto.Id = carId;
         _carService.Update(carDto);
+        _carCache.Remove($"{carId}");
+        _carCache.Set($"{carId}", carDto);
+
         return NoContent();
     }
 }
