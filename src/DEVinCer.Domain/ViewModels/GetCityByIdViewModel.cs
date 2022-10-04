@@ -1,3 +1,5 @@
+using DEVinCar.Domain.Models;
+
 namespace DEVinCar.Domain.ViewModels;
 
 public class GetCityByIdViewModel
@@ -8,12 +10,12 @@ public class GetCityByIdViewModel
     public string stateName { get; set; }
     public string stateInitials { get; set; }
 
-    public GetCityByIdViewModel(int cityId, string cityName, int stateId, string stateName, string stateInitials)
+    public GetCityByIdViewModel(State state, City city)
     {
-        this.cityId = cityId;
-        this.cityName = cityName;
-        this.stateId = stateId;
-        this.stateName = stateName;
-        this.stateInitials = stateInitials;
+        cityId = city.Id;
+        cityName = city.Name;
+        stateId = state.Id;
+        stateName = state.Name;
+        stateInitials = state.Initials;
     }
 }

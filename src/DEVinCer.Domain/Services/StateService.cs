@@ -23,7 +23,7 @@ public class StateService : IStateService
         _mapper = mapper;
     }
 
-    public IList<GetCityByIdViewModel> GetCitiesByStateId(int stateId, string name)
+    public IList<CityDTO> GetCitiesByStateId(int stateId, string name)
     {
         var query = _cityRepository.ListAll().Where(c => c.StateId == stateId).AsQueryable();
         var existsState = _stateRepository.ListAll().Any(s => s.Id == stateId);
@@ -37,13 +37,14 @@ public class StateService : IStateService
         if(!query.ToList().Any())
             throw new IsExistsException("Registers not found!");
 
-        return _mapper.Map<IList<GetCityByIdViewModel>>(query).ToList();
+        return _mapper.Map<IList<CityDTO>>(query);
 
     }
 
     public GetCityByIdViewModel GetCityById(int stateId, int cityId)
     {
         var city = _cityRepository.GetById(cityId);
+        var state = _stateRepository.GetById(stateId);
 
         if(city == null)
             throw new IsExistsException("City not found!");
@@ -51,7 +52,8 @@ public class StateService : IStateService
         if(city.StateId != stateId)
             throw new BadRequestException("City is not part of the informed state!");
 
-        return _mapper.Map<GetCityByIdViewModel>(city);
+
+        return new GetCityByIdViewModel(state, city);
     }
 
     public GetStateByIdViewModel GetStateByID(int stateId)

@@ -34,17 +34,17 @@ public class ErrorMiddleware
             status = HttpStatusCode.NotFound;
             message = ex.Message;
         }
-        if(ex is BadRequestException)
+        else if(ex is BadRequestException)
         {
             status = HttpStatusCode.BadRequest;
             message = ex.Message;
         }
-        if(ex is NotAcceptableException)
+        else if(ex is NotAcceptableException)
         {
             status = HttpStatusCode.NotAcceptable;
             message = ex.Message;
         }
-        if(ex is AutenticationException)
+        else if(ex is AutenticationException)
         {
             status = HttpStatusCode.Forbidden;
             message = ex.Message;

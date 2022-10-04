@@ -6,7 +6,7 @@ public class GetStateViewModel {
     public string Name { get; set; }
     public string Initials { get; set; }
 
-    public virtual List<string> Cities { get; set; }
+    public virtual List<string> Cities { get; set; } = new List<string>();
 
     public GetStateViewModel(int id, string name, string intials) {
         Id = id;
@@ -20,6 +20,10 @@ public class GetStateViewModel {
         Id = state.Id;
         Name = state.Name;
         Initials = state.Initials;
+        foreach (var city in state.Cities)
+        {
+            Cities.Add(city?.Name);
+        }
     }
 }
 

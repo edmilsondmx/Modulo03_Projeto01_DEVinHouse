@@ -30,6 +30,7 @@ public class SalesController : ControllerBase
     }
 
     [HttpPost("{saleId}/item")]
+    [Authorize(Roles = "Manager, Seller")]
     public IActionResult PostSale(
        [FromBody] SaleCarDTO body,
        [FromRoute] int saleId

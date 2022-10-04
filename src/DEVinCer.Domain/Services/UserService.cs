@@ -119,7 +119,6 @@ public class UserService : IUserService
 
         if (!query.ToList().Any())
             throw new IsExistsException("Registers not found!");
-            //TODO: Criar exception para lista vazia!
         
         return _mapper.Map<IList<UserDTO>>(query).ToList();
     }

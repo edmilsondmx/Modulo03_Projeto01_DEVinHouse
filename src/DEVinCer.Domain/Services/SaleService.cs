@@ -46,9 +46,6 @@ public class SaleService : ISaleService
         if(dto.DeliveryForecast < DateTime.Now.Date)
             throw new BadRequestException("Delivery forecast less than current date!");
         
-        if(dto.DeliveryForecast == null)
-            dto.DeliveryForecast = DateTime.Now.AddDays(7);
-        
         _saleRepository.InsertDelivery(_mapper.Map<Delivery>(dto));
     }
 

@@ -62,9 +62,7 @@ public class StatesController : ControllerBase
         [FromQuery] string name
     ) 
     {
-        var states = _stateService.ListAll(name);
-
-        return Ok();
+        return Ok(_stateService.ListAll(name));
     }
 
     [HttpGet("{stateId}/city")]

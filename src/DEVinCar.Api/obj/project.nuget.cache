@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jZq1l+x3Cqtm1pwzO9Sy8FL602YezhkyzmAV974VZ8p2ch3hovnPACN1IF7RvViro8BWdusjzq/yy8AuhYlBfg==",
+  "dgSpecHash": "P2dFgZ1zNeCMf2E5bcjstnHAdL4mmaGEhTnRBHL7P5O6gbnVHGLyuIDu/X/uoICPOOqRsF11DMMqFnAhjSX5PQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCar.Api\\DEVinCar.Api.csproj",
+  "projectFilePath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCar.Api\\DEVinCar.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Edmilson\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Edmilson\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

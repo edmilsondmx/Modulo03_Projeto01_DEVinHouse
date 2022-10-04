@@ -11,7 +11,7 @@ namespace DEVinCar.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+[Authorize(Roles = "Manager")]
 public class CarController : ControllerBase
 {
     private readonly ICarService _carService;
