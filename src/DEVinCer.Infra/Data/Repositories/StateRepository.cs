@@ -1,6 +1,7 @@
 using DEVinCar.Domain.Models;
 using DEVinCar.Infra.Data;
 using DEVinCer.Domain.Interfaces.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCer.Infra.Data.Repositories;
 
@@ -8,6 +9,11 @@ public class StateRepository : BaseRepository<State, int>, IStateRepository
 {
     public StateRepository(DevInCarDbContext context) : base (context)
     {
+    }
+    
+    public override IQueryable<State> ListAll()
+    {
+        return base.ListAll().Include(s => s.Cities);
     }
 
     public City GetCityById(int cityId)
