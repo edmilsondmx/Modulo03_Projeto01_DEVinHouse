@@ -2,6 +2,7 @@ using DEVinCar.Api.Config;
 using DEVinCer.DI.IoC;
 using DEVinCer.Domain.AutoMapper;
 using DEVinCer.Domain.Security;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,12 @@ builder.Services.AddScoped(typeof(CacheService<>));
 builder.Services.AddSingleton(AutoMapperConfig.Configure());
 
 builder.Services.RegisterAuthentication();
+
+builder.Services.AddMvc( config => {
+    config.ReturnHttpNotAcceptable = true;
+    config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+    config.InputFormatters.Add(new XmlSerializerInputFormatter(config));
+});
 
 var app = builder.Build();
 app.UseMiddleware<ErrorMiddleware>();
