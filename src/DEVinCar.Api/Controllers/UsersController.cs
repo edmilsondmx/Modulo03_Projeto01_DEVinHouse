@@ -6,6 +6,7 @@ using DEVinCar.Domain.DTOs;
 using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
+using DEVinCer.Domain.Services;
 
 namespace DEVinCar.Api.Controllers;
 
@@ -28,7 +29,7 @@ public class UserController : ControllerBase
        [FromQuery] DateTime? birthDateMin
     )
     {
-        var users = _userService.ListAll(name, birthDateMax, birthDateMin).ToLookup(u => u.Password = "*******");
+        var users = ConverterUser.ToDto(_userService.ListAll(name, birthDateMax, birthDateMin));
         
         return Ok(users);
     }
@@ -38,7 +39,7 @@ public class UserController : ControllerBase
         [FromRoute] int id
     )
     {
-        return Ok(_userService.GetById(id));
+        return Ok(ConverterUser.ToDto(_userService.GetById(id)));
     }
 
     [HttpGet("{userId}/buy")]
