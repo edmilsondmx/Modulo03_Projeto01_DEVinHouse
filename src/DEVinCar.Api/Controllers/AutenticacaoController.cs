@@ -5,6 +5,7 @@ using DEVinCer.Domain.Interfaces.Service;
 using DEVinCer.Domain.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DEVinCar.Api.Controllers;
 
@@ -33,7 +34,38 @@ public class AutenticacaoController : ControllerBase
             return StatusCode(StatusCodes.Status403Forbidden);
 
         var token = TokenService.GenerateToken(_mapper.Map<User>(user));
+        var refreshToken = RefreshTokenService.GenerateRefreshToken();
+        RefreshTokenService.SaveRefreshToken(user.Name, refreshToken);
 
-        return Ok("bearer " + token);
+        return Ok(new {
+            token, 
+            refreshToken
+        });
+    }
+    [HttpPost]
+    [Route("refresh-token")]
+    [AllowAnonymous]
+    public IActionResult Refresh(
+        [FromQuery] string token,
+        [FromQuery] string refreshToken
+    )
+    {
+        var principal = RefreshTokenService.GetPrincipalFromExpiredToken(token);
+        var username = principal.Identity.Name;
+        var SaveRefreshToken = RefreshTokenService.GetRefreshToken(username);
+
+        if(SaveRefreshToken != refreshToken)
+            throw new SecurityTokenException("Invalid Token");
+
+        var newToken = TokenService.GenerateToken(principal.Claims);
+        var newRefreshToken = RefreshTokenService.GenerateRefreshToken();
+
+        RefreshTokenService.DeleteRefreshToken(username, refreshToken);
+        RefreshTokenService.SaveRefreshToken(username, newRefreshToken);
+
+        return Ok( new {
+            newToken,
+            newRefreshToken
+        });
     }
 }
