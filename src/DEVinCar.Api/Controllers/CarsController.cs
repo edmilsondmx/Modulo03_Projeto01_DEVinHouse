@@ -75,7 +75,7 @@ public class CarController : ControllerBase
     }
 
     [HttpPut("{carId}")]
-    public ActionResult<Car> Put(
+    public IActionResult Put(
         [FromRoute] int carId,
         [FromBody] CarDTO carDto
     )
