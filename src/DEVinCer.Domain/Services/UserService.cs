@@ -123,6 +123,24 @@ public class UserService : IUserService
         return _mapper.Map<IList<UserDTO>>(query).ToList();
     }
 
+    public void Update(int id, UserDTO user)
+    {
+        var isExists = _userRepository.ListAll()
+            .Any(u => u.Email == user.Email && u.Id != user.Id);
+
+        var userDb = _userRepository.GetById(id);
+
+        if(userDb == null)
+            throw new IsExistsException("User not found!");
+        
+        if(isExists)
+            throw new IsExistsException("E-mail already registered!");
+
+        userDb.Update(user);
+
+        _userRepository.Update(userDb);
+    }
+
     private bool IsExists(UserDTO user)
     {
         return _userRepository.ListAll()

@@ -14,5 +14,5 @@ public interface IUserService
     void InsertSale(int userId, SaleDTO dto);
     void InsertBuy(int userId, BuyDTO dto);
     void DeleteUser(int id);
-    
+    void Update(int id, UserDTO user);
 }
