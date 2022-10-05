@@ -37,7 +37,7 @@ public class SalesController : ControllerBase
     )
     {
         _saleService.InsertSale(body, saleId);
-        return Created("api/sales/{saleId}/item", body.CarId);
+        return Created("api/sales/{saleId}/item", body);
     }
 
     [HttpPost("{saleId}/deliver")]
