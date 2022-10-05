@@ -27,12 +27,16 @@ public class SaleService : ISaleService
 
     public SaleViewModel GetById(int id)
     {
-        var sale = _saleRepository.GetById(id);
-        if(sale == null)
+        var saleDb = _saleRepository.GetById(id);
+        var salecarDb = _saleCarRepository.ListAll().Where(sc => sc.SaleId == id);
+
+        if(saleDb == null)
             throw new IsExistsException("Sale not found!");
 
-        return _mapper.Map<SaleViewModel>(sale);
+        var saleViewModel = new SaleViewModel(saleDb);
+        saleViewModel.Itens = salecarDb.Select(sc => new CarViewModel(sc)).ToList();
 
+        return saleViewModel;
     }
 
     public void InsertDelivery(DeliveryDTO dto, int id)
@@ -51,22 +55,26 @@ public class SaleService : ISaleService
 
     public void InsertSale(SaleCarDTO dto, int id)
     {
-        var car = _carRepository.GetById(dto.CarId);
-        var sale = _saleRepository.GetById(dto.SaleId);
+        var carDb = _carRepository.GetById(dto.CarId);
+        var saleDb = _saleRepository.GetById(dto.SaleId);
 
-        if(car == null && sale == null)
+        if(carDb == null && saleDb == null)
             throw new IsExistsException("Registers not found!");
         
         if (dto.UnitPrice <= 0 || dto.Amount <= 0)
             throw new BadRequestException("Amount and price must be greater than zero!");
 
         if (dto.UnitPrice == null)
-            dto.UnitPrice = car.SuggestedPrice;
+            dto.UnitPrice = carDb.SuggestedPrice;
         
         if (dto.Amount == null)
             dto.Amount = 1;
 
-        _saleRepository.InsertSale(_mapper.Map<SaleCar>(dto));
+        var saleCar = _mapper.Map<SaleCar>(dto);
+        saleCar.Car = carDb;
+        saleCar.Sale = saleDb;
+
+        _saleRepository.InsertSale(saleCar);
     }
 
     public void UpdateAmount(int saleId, int carId, int amount)

@@ -21,10 +21,10 @@ builder.Services.AddSingleton(AutoMapperConfig.Configure());
 
 builder.Services.RegisterAuthentication();
 
+
 builder.Services.AddMvc( config => {
-    config.ReturnHttpNotAcceptable = true;
-    config.OutputFormatters.Add(new XmlSerializerOutputFormatter());
-    config.InputFormatters.Add(new XmlSerializerInputFormatter(config));
+    config.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
+    config.InputFormatters.Add(new XmlDataContractSerializerInputFormatter(config));
 });
 
 var app = builder.Build();

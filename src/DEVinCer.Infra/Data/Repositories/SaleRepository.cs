@@ -1,6 +1,7 @@
 using DEVinCar.Domain.Models;
 using DEVinCar.Infra.Data;
 using DEVinCer.Domain.Interfaces.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace DEVinCer.Infra.Data.Repositories;
 
@@ -8,6 +9,14 @@ public class SaleRepository : BaseRepository<Sale, int>, ISaleRepository
 {
     public SaleRepository(DevInCarDbContext context) : base (context)
     {
+    }
+    public override Sale GetById(int id)
+    {
+        return _context.Sales.Where(s => s.Id == id)
+            .Include(s => s.UserBuyer)
+            .Include(s => s.UserSeller)
+            .Include(s => s.Cars)
+            .FirstOrDefault();
     }
 
     public void InsertDelivery(Delivery delivery)

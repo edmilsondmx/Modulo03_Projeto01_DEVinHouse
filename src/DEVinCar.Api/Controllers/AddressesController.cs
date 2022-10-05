@@ -32,8 +32,6 @@ public class AddressesController : ControllerBase
         var result = _addressService
             .ListAll(cityId, stateId, street, cep)
             .AsQueryable();
-
-        result.Include(a => a.City.Name).ToList();
         
         return Ok(result);
     }

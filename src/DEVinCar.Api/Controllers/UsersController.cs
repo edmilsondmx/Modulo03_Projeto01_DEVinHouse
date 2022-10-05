@@ -7,6 +7,7 @@ using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
 using DEVinCer.Domain.Services;
+using DEVinCer.Domain.Enums;
 
 namespace DEVinCar.Api.Controllers;
 
@@ -29,9 +30,10 @@ public class UserController : ControllerBase
        [FromQuery] DateTime? birthDateMin
     )
     {
-        var users = ConverterUser.ToDto(_userService.ListAll(name, birthDateMax, birthDateMin));
+        if(!User.IsInRole(Roles.Admin.GetName()))
+            return Ok(ConverterUser.ToDto(_userService.ListAll(name, birthDateMax, birthDateMin)));
         
-        return Ok(users);
+        return Ok(_userService.ListAll(name, birthDateMax, birthDateMin));
     }
 
     [HttpGet("{id}")]
@@ -39,7 +41,10 @@ public class UserController : ControllerBase
         [FromRoute] int id
     )
     {
-        return Ok(ConverterUser.ToDto(_userService.GetById(id)));
+        if(!User.IsInRole(Roles.Admin.GetName()))
+            return Ok(ConverterUser.ToDto(_userService.GetById(id)));
+
+        return Ok(_userService.GetById(id));
     }
 
     [HttpGet("{userId}/buy")]
@@ -97,7 +102,15 @@ public class UserController : ControllerBase
         return NoContent();
     }
 
-
+    [HttpPut("{userId}")]
+    public IActionResult Put(
+        [FromRoute] int userId,
+        [FromBody] UserDTO dto
+    )
+    {
+        _userService.Update(userId, dto);
+        return NoContent();
+    }
 }
 
 

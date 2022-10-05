@@ -5,9 +5,13 @@ namespace DEVinCer.Domain.Enums;
 
 public enum Roles
 {
+    [XmlEnumAttribute("A")]
+    [Display(Name = "Admin")]
+    Admin,
+
     [XmlEnumAttribute("M")]
     [Display(Name = "Manager")]
-    Manager = 1,
+    Manager,
     
     [XmlEnumAttribute("S")]
     [Display(Name = "Seller")]

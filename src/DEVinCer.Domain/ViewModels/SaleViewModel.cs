@@ -1,3 +1,5 @@
+using DEVinCar.Domain.Models;
+
 namespace DEVinCar.Domain.ViewModels;
 public class SaleViewModel
 {
@@ -7,5 +9,11 @@ public class SaleViewModel
     public virtual List<CarViewModel> Itens { get; set; }
     public SaleViewModel()
     {
+    }
+    public SaleViewModel(Sale sale)
+    {
+        SellerName = sale.UserSeller.Name;
+        BuyerName = sale.UserBuyer.Name;
+        SaleDate = sale.SaleDate;
     }
 }
