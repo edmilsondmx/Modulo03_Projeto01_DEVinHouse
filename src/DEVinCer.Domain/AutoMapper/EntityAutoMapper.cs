@@ -10,6 +10,7 @@ public class EntityAutoMapper : Profile
     public EntityAutoMapper()
     {
         CreateMap<Address, AddressViewModel>()
+            .ForMember(a => a.CityName, o => o.MapFrom(a => a.City.Name))
             .ReverseMap();
 
         CreateMap<AdressDTO, Address>()
@@ -31,9 +32,6 @@ public class EntityAutoMapper : Profile
             .ReverseMap();
 
         CreateMap<SaleDTO, Sale>()
-            .ReverseMap();
-
-        CreateMap<SaleViewModel, Sale>()
             .ReverseMap();
 
         CreateMap<BuyDTO, Sale>()
