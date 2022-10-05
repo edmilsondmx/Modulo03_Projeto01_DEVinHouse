@@ -1,4 +1,5 @@
 using DEVinCar.Infra.Data;
+using DEVinCer.Domain.Models;
 
 namespace DEVinCer.Infra.Data.Repositories;
 
@@ -37,5 +38,10 @@ public class BaseRepository <TEntity, Tkey> where TEntity : class
     public virtual TEntity GetById(Tkey id)
     {
         return _context.Set<TEntity>().Find(id);
+    }
+
+    public virtual int GetTotal()
+    {
+        return _context.Set<TEntity>().Count();
     }
 }
