@@ -1,3 +1,5 @@
+using DEVinCer.Domain.Models;
+
 namespace DEVinCer.Domain.Interfaces.Repository;
 
 public interface IBaseRepository <TEntity, Tkey> where TEntity : class
@@ -7,5 +9,5 @@ public interface IBaseRepository <TEntity, Tkey> where TEntity : class
     void Insert(TEntity entity);
     IQueryable<TEntity> ListAll();
     TEntity GetById(Tkey id);
-
+    int GetTotal();
 }

@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Memory;
 using DEVinCar.Api.Config;
 using DEVinCer.Domain.Services;
+using DEVinCer.Domain.DTOs;
+using DEVinCer.Domain.Models;
 
 namespace DEVinCar.Api.Controllers;
 
@@ -33,12 +35,14 @@ public class CarController : ControllerBase
         [FromRoute] int carId
     )
     {
+        var uri = $"{Request.Scheme}://{Request.Host}";
         CarDTO carDb;
 
         if(!_carCache.TryGetValue($"{carId}", out carDb))
         {
             carDb = _carService.GetById(carId);
             _carCache.Set($"{carId}", carDb);
+            carDb.Links = GetHateoas(carDb, uri);
         }
 
         return Ok(carDb);
@@ -48,10 +52,28 @@ public class CarController : ControllerBase
     public IActionResult Get(
         [FromQuery] string name,
         [FromQuery] decimal? priceMin,
-        [FromQuery] decimal? priceMax
+        [FromQuery] decimal? priceMax,
+        int skip = 0,
+        int take = 10
     )
     {
-        return Ok(_carService.ListAll(name, priceMin, priceMax));
+        var uri = $"{Request.Scheme}://{Request.Host}";
+        var pagination = new Pagination(take, skip);
+        var totalRegisters = _carService.GetTotal();
+
+        Response.Headers.Add("x-Pagination-TotalRegisters", totalRegisters.ToString());
+
+        var cars = new BaseDTO<IList<CarDTO>>(){
+            Data = _carService.ListAll(name, priceMin, priceMax, pagination).ToList(),
+            Links = GetHateoasForAll(uri, take, skip, totalRegisters)
+        };
+
+        foreach (var car in cars.Data)
+        {
+            car.Links = GetHateoas(car, uri);
+        }
+
+        return Ok(cars);
     }
 
     [HttpPost]
@@ -86,5 +108,72 @@ public class CarController : ControllerBase
         _carCache.Set($"{carId}", carDto);
 
         return NoContent();
+    }
+
+    private List<HateoasDTO> GetHateoas(CarDTO car, string baseUri)
+    {
+        var hateoas =  new List<HateoasDTO>(){
+            new HateoasDTO(){
+                Rel = "self",
+                Type = "Get",
+                URI = $"{baseUri}/api/car/{car.Id}"
+            },
+            new HateoasDTO(){
+                Rel = "car",
+                Type = "Put",
+                URI = $"{baseUri}/api/car/{car.Id}"
+            },
+            new HateoasDTO(){
+                Rel = "car",
+                Type = "Delete",
+                URI = $"{baseUri}/api/car/{car.Id}"
+            }
+        };
+        return hateoas;
+    }
+
+    private List<HateoasDTO> GetHateoasForAll( string baseUri, int take, int skip, int ultimo)
+    {
+        var hateoas =   new List<HateoasDTO>(){
+            new HateoasDTO(){
+                Rel = "self",
+                Type = "Get",
+                URI = $"{baseUri}/api/car?skip={skip}&take={take}"
+            },
+            new HateoasDTO(){
+                Rel = "car",
+                Type = "Post",
+                URI = $"{baseUri}/api/car/"
+            }
+        };
+        var razao = take - skip;
+        if(skip != 0)
+        {
+            var newSkip = skip - razao;
+            if(newSkip < 0)
+            {
+                newSkip = 0;
+            }
+            hateoas.Add(new HateoasDTO()
+                {
+                    Rel = "prev",
+                    Type = "Get",
+                    URI = $"{baseUri}/api/car?skip={newSkip}&take={take - razao}"
+                }
+            );
+        }
+
+        if(take < ultimo)
+        {
+            hateoas.Add(new HateoasDTO()
+                {
+                    Rel = "next",
+                    Type = "Get",
+                    URI = $"{baseUri}/api/car?skip={skip + razao}&take={take + razao}"
+                }
+            );
+        }
+
+        return hateoas;
     }
 }
