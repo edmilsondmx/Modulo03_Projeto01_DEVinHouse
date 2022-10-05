@@ -22,6 +22,8 @@ public class UserDTO
     [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
     [CheckAgeAttribute(18)]
     public DateTime BirthDate { get; set; }
+    [Required(ErrorMessage = "The role is required")]
+    [Range(0, 3)]
     public Roles Role { get; set; }
     
     public UserDTO()
