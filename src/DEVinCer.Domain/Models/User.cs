@@ -1,3 +1,4 @@
+using DEVinCar.Domain.DTOs;
 using DEVinCer.Domain.Enums;
 
 namespace DEVinCar.Domain.Models;
@@ -23,5 +24,13 @@ public class User
         Name = name;
         BirthDate = birthDate;
         Role = role;
+    }
+    public void Update(UserDTO user)
+    {
+        Email = user.Email;
+        Password = user.Password;
+        Name = user.Name;
+        BirthDate = user.BirthDate;
+        Role = user.Role;
     }
 }
