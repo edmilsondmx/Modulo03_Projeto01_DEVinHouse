@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using DEVinCer.Domain.DTOs;
 
 namespace DEVinCar.Domain.DTOs;
 
-public class CarDTO
+public class CarDTO : BaseHateoasDTO
 {
     public int Id { get; set; }
     [Required(ErrorMessage = "The name is required")]
