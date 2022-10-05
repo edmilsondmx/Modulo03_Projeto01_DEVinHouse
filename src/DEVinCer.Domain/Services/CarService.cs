@@ -4,6 +4,7 @@ using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
+using DEVinCer.Domain.Models;
 
 namespace DEVinCer.Domain.Services;
 
@@ -54,9 +55,9 @@ public class CarService : ICarService
         _carRepository.Insert(_mapper.Map<Car>(dto));
     }
 
-    public IList<CarDTO> ListAll(string name, decimal? priceMin, decimal? priceMax)
+    public IList<CarDTO> ListAll(string name, decimal? priceMin, decimal? priceMax, Pagination pagination)
     {
-        var query = _carRepository.ListAll().AsQueryable();
+        var query = _carRepository.ListAllPg(pagination).AsQueryable();
 
         if(!String.IsNullOrEmpty(name))
             query = query.Where(c => c.Name.Contains(name));
@@ -74,6 +75,11 @@ public class CarService : ICarService
             throw new IsExistsException("Registers not found!");
         
         return _mapper.Map<IList<CarDTO>>(query).ToList();        
+    }
+
+    public int GetTotal()
+    {
+        return _carRepository.GetTotal();
     }
 
     public void Update(CarDTO dto)
