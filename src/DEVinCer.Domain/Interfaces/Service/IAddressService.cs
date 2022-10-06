@@ -1,5 +1,5 @@
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.ViewModels;
+using DEVinCer.Domain.DTOs;
 
 namespace DEVinCer.Domain.Interfaces.Service;
 

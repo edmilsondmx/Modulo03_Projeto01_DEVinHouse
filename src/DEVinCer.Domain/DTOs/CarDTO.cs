@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using DEVinCer.Domain.DTOs;
 
-namespace DEVinCar.Domain.DTOs;
+namespace DEVinCer.Domain.DTOs;
 
 public class CarDTO : BaseHateoasDTO
 {

@@ -1,4 +1,3 @@
-using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace DEVinCar.Api.Config;

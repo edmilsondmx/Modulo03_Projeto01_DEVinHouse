@@ -1,5 +1,5 @@
 using AutoMapper;
-using DEVinCar.Domain.DTOs;
+using DEVinCer.Domain.DTOs;
 using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
@@ -19,7 +19,7 @@ public class DeliveryService : IDeliveryService
 
     public IList<DeliveryDTO> ListAll(int? addressId, int? saleId)
     {
-        var query = _deliveryRepository.ListAll().AsQueryable();
+        var query = _deliveryRepository.ListAll();
 
         if(addressId.HasValue)
             query = query.Where(a => a.AddressId == addressId);

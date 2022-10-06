@@ -1,16 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using DEVinCar.Infra.Data;
-using DEVinCar.Domain.ViewModels;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
+using DEVinCer.Domain.DTOs;
+using DEVinCer.Domain.Models;
 using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Memory;
 using DEVinCar.Api.Config;
-using DEVinCer.Domain.Services;
-using DEVinCer.Domain.DTOs;
-using DEVinCer.Domain.Models;
 
 namespace DEVinCar.Api.Controllers;
 

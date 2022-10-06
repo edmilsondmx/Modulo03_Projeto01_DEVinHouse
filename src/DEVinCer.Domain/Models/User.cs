@@ -1,7 +1,7 @@
-using DEVinCar.Domain.DTOs;
+using DEVinCer.Domain.DTOs;
 using DEVinCer.Domain.Enums;
 
-namespace DEVinCar.Domain.Models;
+namespace DEVinCer.Domain.Models;
 
 public class User
 {

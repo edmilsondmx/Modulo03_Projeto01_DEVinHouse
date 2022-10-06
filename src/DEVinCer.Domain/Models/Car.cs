@@ -1,6 +1,6 @@
-using DEVinCar.Domain.DTOs;
+using DEVinCer.Domain.DTOs;
 
-namespace DEVinCar.Domain.Models;
+namespace DEVinCer.Domain.Models;
 
 public class Car
 {

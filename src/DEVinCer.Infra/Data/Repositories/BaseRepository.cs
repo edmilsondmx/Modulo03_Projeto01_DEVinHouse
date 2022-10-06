@@ -1,5 +1,3 @@
-using DEVinCar.Infra.Data;
-using DEVinCer.Domain.Models;
 
 namespace DEVinCer.Infra.Data.Repositories;
 

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DEVinCar.Domain.Annotations;
+namespace DEVinCer.Domain.Annotations;
 
 public class CheckAgeAttribute : ValidationAttribute
 {

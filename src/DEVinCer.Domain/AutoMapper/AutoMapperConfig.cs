@@ -1,5 +1,4 @@
 using AutoMapper;
-
 namespace DEVinCer.Domain.AutoMapper;
 
 public class AutoMapperConfig
@@ -11,6 +10,5 @@ public class AutoMapperConfig
         });
 
         return ConfigMap.CreateMapper();
-        
     }
 }

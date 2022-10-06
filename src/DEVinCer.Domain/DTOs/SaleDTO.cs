@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DEVinCar.Domain.DTOs;
+namespace DEVinCer.Domain.DTOs;
 
 public class SaleDTO
 {

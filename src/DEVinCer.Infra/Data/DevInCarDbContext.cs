@@ -1,10 +1,10 @@
 using System.Runtime.Serialization;
-using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Models;
 using DEVinCer.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace DEVinCar.Infra.Data;
+namespace DEVinCer.Infra.Data;
 
 public class DevInCarDbContext : DbContext
 {
