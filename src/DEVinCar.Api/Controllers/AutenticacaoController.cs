@@ -1,5 +1,5 @@
 using AutoMapper;
-using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Models;
 using DEVinCer.Domain.DTOs;
 using DEVinCer.Domain.Interfaces.Service;
 using DEVinCer.Domain.Services;

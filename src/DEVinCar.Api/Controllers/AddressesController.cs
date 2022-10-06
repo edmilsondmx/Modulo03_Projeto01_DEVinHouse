@@ -1,13 +1,13 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using DEVinCer.Domain.Interfaces.Service;
 using DEVinCer.Domain.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DEVinCar.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-//[Authorize]
+[Authorize]
 public class AddressesController : ControllerBase
 {
     private readonly IAddressService _addressService;

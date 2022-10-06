@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using DEVinCar.Infra.Data;
-using DEVinCar.Domain.ViewModels;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
 
