@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Mvc;
-using DEVinCar.Infra.Data;
-using DEVinCar.Domain.ViewModels;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using DEVinCer.Domain.DTOs;
 using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.AspNetCore.Authorization;
 
@@ -41,13 +37,13 @@ public class SalesController : ControllerBase
     }
 
     [HttpPost("{saleId}/deliver")]
-    public ActionResult<DeliveryDTO> PostDeliver(
+    public IActionResult PostDeliver(
         [FromRoute] int saleId,
         [FromBody] DeliveryDTO body
     )
     {
         _saleService.InsertDelivery(body, saleId);
-        return Created("{saleId}/deliver", body);
+        return Created("api/sales/{saleId}/deliver", body);
     }
 
     [HttpPatch("{saleId}/car/{carId}/amount/{amount}")]
