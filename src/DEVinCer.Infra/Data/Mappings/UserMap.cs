@@ -43,6 +43,7 @@ public class UserMap : IEntityTypeConfiguration<User>
                 new User (2, "andrea@email.com", "987dasd654321", "Andrea", new DateTime(1999, 05, 11), Roles.Seller),
                 new User (3, "adao@email.com", "2589asd", "Adao", new DateTime(2005, 09, 02), Roles.Buyer),
                 new User (4, "monique@email.com", "asd45uio", "Monique", new DateTime(2001, 06, 07), Roles.Buyer),
+                new User(5, "admin@devincar.com", "2302", "Edmilson", new DateTime(1990, 01, 08), Roles.Admin)
             });
     }
 
