@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using DEVinCer.Domain.Annotations;
 
 namespace DEVinCer.Domain.DTOs;
 
