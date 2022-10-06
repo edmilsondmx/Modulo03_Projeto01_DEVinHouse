@@ -8,13 +8,6 @@ public class GetStateViewModel {
 
     public virtual List<string> Cities { get; set; } = new List<string>();
 
-    public GetStateViewModel(int id, string name, string intials) {
-        Id = id;
-        Name = name;
-        Initials = intials;
-        Cities = new List<string>();
-    }
-
     public GetStateViewModel(State state)
     {
         Id = state.Id;

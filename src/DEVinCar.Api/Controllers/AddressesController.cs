@@ -1,18 +1,13 @@
 ﻿
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using DEVinCar.Infra.Data;
-using DEVinCar.Domain.ViewModels;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Interfaces.Service;
-using Microsoft.AspNetCore.Authorization;
+using DEVinCer.Domain.DTOs;
 
 namespace DEVinCar.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
+//[Authorize]
 public class AddressesController : ControllerBase
 {
     private readonly IAddressService _addressService;
@@ -30,8 +25,7 @@ public class AddressesController : ControllerBase
     )
     {
         var result = _addressService
-            .ListAll(cityId, stateId, street, cep)
-            .AsQueryable();
+            .ListAll(cityId, stateId, street, cep);
         
         return Ok(result);
     }

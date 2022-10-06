@@ -3,6 +3,7 @@ using DEVinCer.DI.IoC;
 using DEVinCer.Domain.AutoMapper;
 using DEVinCer.Domain.Security;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,8 +24,26 @@ builder.Services.RegisterAuthentication();
 
 
 builder.Services.AddMvc( config => {
+    config.ReturnHttpNotAcceptable = true;
     config.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
     config.InputFormatters.Add(new XmlDataContractSerializerInputFormatter(config));
+});
+
+builder.Services.AddSwaggerGen( options => 
+{
+    options.SwaggerDoc("v1", 
+        new OpenApiInfo
+        {
+            Title = "DEVinCar.Api",
+            Version = "v1",
+            Description = "Api desenvolvida para DEVinHouse!",
+            Contact = new OpenApiContact
+            {
+                Name = "Edmilson Gomes",
+                Url = new Uri("https://github.com/edmilsondmx"),
+                Email = "edmilsondmx@gmail.com",
+            }
+        });
 });
 
 var app = builder.Build();
@@ -37,7 +56,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// comentando para conseguir trabalhar com Insomnia/Postman via http comum
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
