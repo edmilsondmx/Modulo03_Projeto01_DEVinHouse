@@ -1,4 +1,3 @@
-using DEVinCar.Domain.Models;
 using DEVinCer.Domain.Models;
 
 namespace DEVinCer.Domain.Interfaces.Repository;

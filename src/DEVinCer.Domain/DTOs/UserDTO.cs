@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using DEVinCar.Domain.Annotations;
+using DEVinCer.Domain.Annotations;
 using DEVinCer.Domain.Enums;
 
-namespace DEVinCar.Domain.DTOs;
+namespace DEVinCer.Domain.DTOs;
 public class UserDTO
 {
     public int Id {get; internal set;}
