@@ -11,15 +11,6 @@ public class AddressViewModel {
     public string CityName { get; set; }
     public virtual City City { internal get; set; }
 
-    public AddressViewModel(int id,string street,int cityId,string cityName,int number,string complement, string cep) {
-        Id = id;
-        Street = street;
-        CityId = cityId;
-        CityName = cityName;
-        Number = number;
-        Complement = complement;
-        Cep = cep;
-    }
     public AddressViewModel()
     {
         
