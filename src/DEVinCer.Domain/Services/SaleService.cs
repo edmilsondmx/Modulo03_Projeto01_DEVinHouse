@@ -1,7 +1,7 @@
 using AutoMapper;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
-using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.DTOs;
+using DEVinCer.Domain.Models;
+using DEVinCer.Domain.ViewModels;
 using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
@@ -49,8 +49,12 @@ public class SaleService : ISaleService
         
         if(dto.DeliveryForecast < DateTime.Now.Date)
             throw new BadRequestException("Delivery forecast less than current date!");
+
+        var delivery = _mapper.Map<Delivery>(dto);
+        delivery.Address = address;
+        delivery.Sale = sale;
         
-        _saleRepository.InsertDelivery(_mapper.Map<Delivery>(dto));
+        _saleRepository.InsertDelivery(delivery);
     }
 
     public void InsertSale(SaleCarDTO dto, int id)

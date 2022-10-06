@@ -1,10 +1,9 @@
 using AutoMapper;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
+using DEVinCer.Domain.DTOs;
+using DEVinCer.Domain.Models;
 using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;
-using DEVinCer.Domain.Models;
 
 namespace DEVinCer.Domain.Services;
 

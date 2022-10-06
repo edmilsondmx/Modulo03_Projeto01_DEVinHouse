@@ -1,6 +1,6 @@
 using AutoMapper;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.ViewModels;
+using DEVinCer.Domain.DTOs;
 using DEVinCer.Domain.Exceptions;
 using DEVinCer.Domain.Interfaces.Repository;
 using DEVinCer.Domain.Interfaces.Service;

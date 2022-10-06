@@ -1,7 +1,5 @@
-using System.Security.AccessControl;
-using System;
 
-namespace DEVinCar.Domain.Models;
+namespace DEVinCer.Domain.Models;
 public class Delivery
 {
     public int Id { get; internal set; }

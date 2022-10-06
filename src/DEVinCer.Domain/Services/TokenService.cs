@@ -1,8 +1,8 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
+using DEVinCer.Domain.DTOs;
+using DEVinCer.Domain.Models;
 using DEVinCer.Domain.Enums;
 using DEVinCer.Domain.Security;
 using Microsoft.IdentityModel.Tokens;

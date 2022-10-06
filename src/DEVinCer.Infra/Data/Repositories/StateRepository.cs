@@ -1,5 +1,4 @@
-using DEVinCar.Domain.Models;
-using DEVinCar.Infra.Data;
+using DEVinCer.Domain.Models;
 using DEVinCer.Domain.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 

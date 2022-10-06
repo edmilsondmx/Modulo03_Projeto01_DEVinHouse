@@ -1,6 +1,6 @@
-using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Models;
 
-namespace DEVinCar.Domain.ViewModels;
+namespace DEVinCer.Domain.ViewModels;
 public class AddressViewModel {
     public int Id { get; set; }
     public int CityId { get; set; }

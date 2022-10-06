@@ -1,4 +1,4 @@
-namespace DEVinCar.Domain.Models;
+namespace DEVinCer.Domain.Models;
 
 public class Sale
 {

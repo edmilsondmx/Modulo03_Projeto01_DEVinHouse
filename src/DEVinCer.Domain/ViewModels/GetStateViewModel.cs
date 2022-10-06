@@ -1,6 +1,6 @@
-using DEVinCar.Domain.Models;
+using DEVinCer.Domain.Models;
 
-namespace DEVinCar.Domain.ViewModels;
+namespace DEVinCer.Domain.ViewModels;
 public class GetStateViewModel {
     public int Id { get; set; }
     public string Name { get; set; }
