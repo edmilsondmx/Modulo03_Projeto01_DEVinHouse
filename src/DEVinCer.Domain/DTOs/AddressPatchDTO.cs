@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DEVinCar.Domain.DTOs;
+namespace DEVinCer.Domain.DTOs;
 
 public class AddressPatchDTO
 {
@@ -12,7 +12,13 @@ public class AddressPatchDTO
     public string Cep { get; set; }
     [Required(ErrorMessage ="The number is required.")]
     public int Number { get; set; }
+    [Required(ErrorMessage = "The Complement name cannot be empty.")]
     [MaxLength(255,ErrorMessage="The Complement must have a maximum of 255 characters")]
     public string Complement { get; set; }
+
+    public AddressPatchDTO()
+    {
+        
+    }
 
 }

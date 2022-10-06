@@ -1,7 +1,7 @@
 using DEVinCer.Domain.Interfaces.Service;
 using Microsoft.Extensions.DependencyInjection;
 using DEVinCer.Domain.Services;
-using DEVinCar.Infra.Data;
+using DEVinCer.Infra.Data;
 
 namespace DEVinCer.DI.IoC;
 

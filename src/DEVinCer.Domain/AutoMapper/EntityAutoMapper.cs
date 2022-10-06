@@ -1,7 +1,7 @@
 using AutoMapper;
-using DEVinCar.Domain.DTOs;
-using DEVinCar.Domain.Models;
-using DEVinCar.Domain.ViewModels;
+using DEVinCer.Domain.ViewModels;
+using DEVinCer.Domain.Models;
+using DEVinCer.Domain.DTOs;
 
 namespace DEVinCer.Domain.AutoMapper;
 
