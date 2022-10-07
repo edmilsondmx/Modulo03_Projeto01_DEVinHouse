@@ -22,6 +22,14 @@ public class AutenticacaoController : ControllerBase
         _mapper = mapper;
     }
 
+
+    /// <summary>
+    /// Faz Login e gera um Token
+    /// </summary>
+    /// <param name="login">Dados de Login</param>
+    /// <response code="200">Token e refresh-Token gerados com sucesso</response>
+    /// <response code="403">Login não autorizado</response>
+    /// <response code="500">Erro interno no servidor</response>
     [HttpPost]
     [Route ("login")]
     [AllowAnonymous]
@@ -42,6 +50,15 @@ public class AutenticacaoController : ControllerBase
             refreshToken
         });
     }
+
+    /// <summary>
+    /// Gera novo token sem a necessidade de refazer o login
+    /// </summary>
+    /// <param name="token">Token gerado no login</param>
+    /// <param name="refreshToken">Refresh-token gerado no login</param>
+    /// <response code="200">Login feito com sucesso</response>
+    /// <response code="403">Login não autorizado</response>
+    /// <response code="500">Erro interno no servidor</response>
     [HttpPost]
     [Route("refresh-token")]
     [AllowAnonymous]

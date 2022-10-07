@@ -1,7 +1,9 @@
+using System.Reflection;
 using DEVinCar.Api.Config;
 using DEVinCer.DI.IoC;
 using DEVinCer.Domain.AutoMapper;
 using DEVinCer.Domain.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.OpenApi.Models;
 
@@ -44,7 +46,36 @@ builder.Services.AddSwaggerGen( options =>
                 Email = "edmilsondmx@gmail.com",
             }
         });
+    options.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
+        {
+            Description =   @"JWT Authorization header using the Bearer scheme. 
+                            Escreva 'Bearer' [espaço] e o token gerado no login na caixa abaixo.
+                            Exemplo: 'Bearer 12345abcdef'",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+    {
+        {
+            new OpenApiSecurityScheme
+                {
+                Reference = new OpenApiReference
+                    {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = JwtBearerDefaults.AuthenticationScheme
+                    },
+                },
+            new List<string>()
+        }
+    });
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
 });
+
+
 
 var app = builder.Build();
 app.UseMiddleware<ErrorMiddleware>();
@@ -53,7 +84,9 @@ app.UseMiddleware<ErrorMiddleware>();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI( opt => {
+        opt.SwaggerEndpoint("/swagger/v1/swagger.json", "DEVinCar.Api V1");
+    });
 }
 
 app.UseHttpsRedirection();
