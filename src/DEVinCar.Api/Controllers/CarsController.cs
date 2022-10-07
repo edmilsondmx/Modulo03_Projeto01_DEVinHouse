@@ -24,6 +24,16 @@ public class CarController : ControllerBase
         carCache.Config("car", new TimeSpan(0,5,0));
     }
 
+
+    /// <summary>
+    /// Lista o veiculo cadastrado por seu id
+    /// </summary>
+    /// <param name="carId">Id do veículo à ser filtrado</param>
+    /// <response code="200">Retorna veiculo filtrado</response>
+    /// <response code="400">Erro ao fazer a Request</response>
+    /// <response code="401">Não autenticado</response>
+    /// <response code="403">Não autorizado</response>
+    /// <response code="404">Registro não encontrado</response>
     [HttpGet("{carId}")]
     public IActionResult GetById(
         [FromRoute] int carId
@@ -42,6 +52,20 @@ public class CarController : ControllerBase
         return Ok(carDb);
     }
 
+
+    /// <summary>
+    /// Lista os veiculos cadastrados
+    /// </summary>
+    /// <param name="name">Filtra pelo nome do carro</param>
+    /// <param name="priceMin">Filtra pelo valor mínimo</param>
+    /// <param name="priceMax">Filtra pelo valor máximo</param>
+    /// <param name="skip">Pula quantos registros</param>
+    /// <param name="take">Mostra quantos registros</param>
+    /// <response code="200">Retorna lista ou com filtros</response>
+    /// <response code="400">Erro ao fazer a Request</response>
+    /// <response code="401">Não autenticado</response>
+    /// <response code="403">Não autorizado</response>
+    /// <response code="404">Registros não encontrados</response>
     [HttpGet]
     public IActionResult Get(
         [FromQuery] string name,
@@ -70,6 +94,14 @@ public class CarController : ControllerBase
         return Ok(cars);
     }
 
+    /// <summary>
+    ///Insere um veiculo no bando de dados 
+    /// </summary>
+    /// <param name="carDto"> Preencha os dados a serem inseridos</param>
+    /// <response code="201">Registro criado.</response>
+    /// <response code="400">Erro ao fazer a Request.</response>
+    /// <response code="401">Não autenticado</response>
+    /// <response code="403">Não autorizado</response>
     [HttpPost]
     public IActionResult Post(
         [FromBody] CarDTO carDto
@@ -79,6 +111,15 @@ public class CarController : ControllerBase
         return Created("api/car", carDto);
     }
 
+    /// <summary>
+    /// Deleta um veiculo conforme o Id Informado
+    /// </summary>
+    /// <param name="carId">O Id do veiculo à ser deletado.</param>
+    /// <response code="204">Veículo Deletado</response>
+    /// <response code="400">Erro ao fazer a Request</response>
+    /// <response code="401">Não autenticado</response>
+    /// <response code="403">Não autorizado</response>
+    /// <response code="404">Veículo não encontrado</response>
     [HttpDelete("{carId}")]
     public IActionResult Delete(
         [FromRoute] int carId
@@ -90,6 +131,16 @@ public class CarController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    ///Atualiza dados de um veículo
+    /// </summary>
+    /// <param name="carDto"></param>
+    /// <param name="carId">Id do veículo à ser alterado</param>
+    /// <response code="204">Veículo alterado com sucesso</response>
+    /// <response code="400">Erro ao fazer a Request</response>
+    /// <response code="401">Não autenticado</response>
+    /// <response code="403">Não autorizado</response>
+    /// <response code="404">Veículo não encontrado</response>
     [HttpPut("{carId}")]
     public IActionResult Put(
         [FromRoute] int carId,
