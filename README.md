@@ -29,12 +29,6 @@ Crud Completo:
 - Autenticação JWT
 - Autorização
 
-
-### 🚀 Como executar
-
-Baixe o projeto para sua máquina com <code>git clone https://github.com/edmilsondmx/Modulo03_Projeto01_DEVinHouse</code> então conecte a sua máquina com um SQL Server local e atualize-o rodando no diretório do projeto o comando <code>dotnet ef database update</code>. Aí você terá o SQL Server atualizado e o projeto está pronto para ser executado com <code>dotnet run</code>. Por padrão a rota será: <code>https://localhost:7019/</code> e para acessar o swaggerUI <code>https://localhost:7019/swagger/index.html</code>.
-
-
 ### Pré-requisitos
 
 Para rodar o projeto em sua máquina, você vai precisar ter instalado as seguintes ferramentas:
@@ -43,54 +37,54 @@ Além disto é importante ter um editor para trabalhar com o código, como [Visu
 
 #### 🎲 Rodando a Aplicação
 
-<ol start="1">
-    <li>No repositório do GitHub, clone o projeto 👇</li>
 
-    ```bash
-    # Clone este repositório
-    $ git clone https://github.com/edmilsondmx/Modulo03_Projeto01_DEVinHouse
-    ```
+<h5>1 - No repositório do GitHub, clone o projeto 👇</h5>
 
-    <li>Abra o projeto no VisualStudio, clicando 2x no arquivo <b style="color:#7b9eeb">DevInCar.sln</b></li>
-<br>
-    <li>Vá para o arquivo <b style="color:#7b9eeb">appsettings.json</b> e adicione a ConnectionString, seguindo o modelo abaixo 👇<br>
+```bash
+# Clone este repositório
+$ git clone https://github.com/edmilsondmx/Modulo03_Projeto01_DEVinHouse
+```
 
-        ```bash
-        "ConnectionStrings": {
-        "ServerConnection": "Server=localhost\\SQLEXPRESS;Database=BD_DEVINCAR;Trusted_Connection=True;"
-        }
-        ```
-    </li>
+<h5>2 - Abra o projeto no VisualStudio, clicando 2x no arquivo <b>DevInCar.sln</b></h5>
 
-    <li>Instale as seguintes dependências, via NuGet:</li>
-<ul>
-    <li>Microsoft.EntityFrameworkCore</li>
-    <li>Microsoft.EntityFrameworkCore.Tools</li>
-    <li>Microsoft.EntityFrameworkCore.Design</li>
-    <li>Microsoft.EntityFrameworkCore.SqlServer</li>
-    <li>Swashbuckle.AspNetCore</li>
-</ul>
-<br>
+    
+<h5>3 - Vá para o arquivo <b>appsettings.json</b> e adicione a ConnectionString, seguindo o modelo abaixo 👇</h5>
 
-<li>Com os pacotes instalados, abra o terminal e digite o comando abaixo 👇</li>
+```bash
+"ConnectionStrings": {
+"ServerConnection": "Server=localhost\\SQLEXPRESS;Database=BD_DEVINCAR;Trusted_Connection=True;"
+}
+```
+
+
+<h5>4 - Instale as seguintes dependências, via NuGet:</h5>
+    <ul>
+        <li>Microsoft.EntityFrameworkCore</li>
+        <li>Microsoft.EntityFrameworkCore.Tools</li>
+        <li>Microsoft.EntityFrameworkCore.Design</li>
+        <li>Microsoft.EntityFrameworkCore.SqlServer</li>
+        <li>Swashbuckle.AspNetCore</li>
+    </ul>
+
+
+
+<h5>5 - Com os pacotes instalados, abra o terminal e digite o comando abaixo 👇</h5>
 
 ```bash
 dotnet ef migrations Add Initial
 ```
 
-<li>Após o comando executado, você irá inserir as tabelas no Banco de Dados com o seguinte comando 👇</li>
+<h5>6 - Após o comando executado, você irá inserir as tabelas no Banco de Dados com o seguinte comando 👇</h5>
 
 ```bash
 dotnet ef Database Update
 ```
 
-<li>Com esses passos executados, você já pode executar a aplicação inserindo o camendo no terminal:</li>
+<h5>7 - Com esses passos executados, você já pode executar a aplicação inserindo o camendo no terminal:</h5>
 
-    ```bash
-    dotnet watch run
+```bash
+dotnet watch run
 ```
-</ol>
-<br>
 
 
 ## Autor
