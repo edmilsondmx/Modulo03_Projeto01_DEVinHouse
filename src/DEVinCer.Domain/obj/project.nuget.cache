@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F+Sch+N2TcQrniJPOkGoCAX/gNGwvrU32KlyjbVsElJqmD95iEPotcLNfmBdXIwo2k36w04zU8ZlqarM9V/EdA==",
+  "dgSpecHash": "CCEKb5ML2cBSoAkfpGNF9YzRWEXj5uo3DRKE6orq7kTuMZUas5BkbcbHDzz9DqAAAHkltvRpcymhnR6Hh+jL7A==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj",
+  "projectFilePath": "C:\\Users\\Edmilson\\Documents\\DevinHouse\\Módulo 3\\Projetos\\Modulo03_Projeto01_DEVinHouse\\src\\DEVinCer.Domain\\DEVinCer.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Edmilson\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Edmilson\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
